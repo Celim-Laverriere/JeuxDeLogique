@@ -1,5 +1,43 @@
 package fr.jeuxdelogique.startjeux;
 
-public class Mastermind {
+import fr.jeuxdelogique.menujeux.*;
 
+public class Mastermind extends Jeux{
+
+	private String choixMode;
+	
+	public Mastermind () {
+		
+	}
+
+	public Mastermind(String choixMode) {
+		this.setChoixMode(choixMode);
+	}
+
+
+	public String getChoixMode() {
+		return choixMode;
+	}
+
+	public void setChoixMode(String choixMode) {
+		MenuMode menuMode = new MenuMode();
+		choixMode = menuMode.getMenu();
+		this.choixMode = choixMode;
+		mode();
+	}
+	
+	public void mode () {
+		
+		if (choixMode.equals("Challenger")) {
+			Challenger challenger = new Challenger();
+		}
+		
+		if (choixMode.equals("Defenseur")) {
+			Defenseur defenseur = new Defenseur();
+		}
+		
+		if (choixMode.equals("Duel")) {
+			Duel duel = new Duel();
+		}
+	}
 }
