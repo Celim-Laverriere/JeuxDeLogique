@@ -1,5 +1,6 @@
 package fr.jeuxdelogique.startjeux;
 
+import fr.jeuxdelogique.Modejeux.ChallengerRecherchePlusMoins;
 import fr.jeuxdelogique.menujeux.*;
 
 public class RecherchePlusMoins extends Jeux{
@@ -29,7 +30,7 @@ public class RecherchePlusMoins extends Jeux{
 	public void mode () {
 		
 		if (choixMode.equals("Challenger")) {
-			Challenger challenger = new Challenger();
+			ChallengerRecherchePlusMoins challenger = new ChallengerRecherchePlusMoins(null, null, null);
 		}
 		
 		if (choixMode.equals("Defenseur")) {
