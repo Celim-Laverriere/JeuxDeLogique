@@ -1,5 +1,6 @@
 package fr.jeuxdelogique.startjeux;
 
+import fr.jeuxdelogique.Modejeux.*;
 import fr.jeuxdelogique.menujeux.*;
 
 public class Mastermind extends Jeux{
@@ -29,15 +30,15 @@ public class Mastermind extends Jeux{
 	public void mode () {
 		
 		if (choixMode.equals("Challenger")) {
-			Challenger challenger = new Challenger();
+			ChallengerMastermind challenger = new ChallengerMastermind(null, null, choixMode);
 		}
 		
 		if (choixMode.equals("Defenseur")) {
-			Defenseur defenseur = new Defenseur();
+			DefenseurMastermind defenseur = new DefenseurMastermind(null, null, choixMode);
 		}
 		
 		if (choixMode.equals("Duel")) {
-			Duel duel = new Duel();
+			DuelMastermind duel = new DuelMastermind(null, null, choixMode);
 		}
 	}
 }

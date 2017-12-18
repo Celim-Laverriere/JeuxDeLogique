@@ -10,7 +10,7 @@ public class DuelMastermind extends Mode {
 	}
 
 	@Override
-	public void PayerGame() {
+	public void playerGame() {
 		// TODO Auto-generated method stub
 		
 	}

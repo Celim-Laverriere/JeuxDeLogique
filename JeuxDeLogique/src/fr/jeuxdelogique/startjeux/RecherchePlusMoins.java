@@ -1,10 +1,13 @@
 package fr.jeuxdelogique.startjeux;
 
-import fr.jeuxdelogique.Modejeux.ChallengerRecherchePlusMoins;
+import java.util.Scanner;
+
+import fr.jeuxdelogique.Modejeux.*;
 import fr.jeuxdelogique.menujeux.*;
 
 public class RecherchePlusMoins extends Jeux{
 
+	Scanner sc = new Scanner (System.in);
 	private String choixMode;
 	
 	public RecherchePlusMoins() {
@@ -29,16 +32,26 @@ public class RecherchePlusMoins extends Jeux{
 	
 	public void mode () {
 		
+		char nouvellePartie = 'O';
+		
 		if (choixMode.equals("Challenger")) {
-			ChallengerRecherchePlusMoins challenger = new ChallengerRecherchePlusMoins(null, null, null);
+			do {
+				ChallengerRecherchePlusMoins challenger = new ChallengerRecherchePlusMoins();
+				
+				System.out.println("Voulez-vous faire une novelle partie O/N");
+				nouvellePartie = sc.nextLine().charAt(0);
+				nouvellePartie = Character.toUpperCase(nouvellePartie);
+				
+			} while (nouvellePartie == 'O');
+			
 		}
 		
 		if (choixMode.equals("Defenseur")) {
-			Defenseur defenseur = new Defenseur();
+			DefenseurRecherchePlusMoins defenseur = new DefenseurRecherchePlusMoins(null, null, choixMode);
 		}
 		
 		if (choixMode.equals("Duel")) {
-			Duel duel = new Duel();
+			DuelRecherchePlusMoins duel = new DuelRecherchePlusMoins(null, null, choixMode);
 		}
 	}
 }

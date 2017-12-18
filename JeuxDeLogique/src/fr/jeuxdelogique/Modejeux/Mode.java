@@ -1,19 +1,25 @@
 package fr.jeuxdelogique.Modejeux;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public abstract class Mode {
 
-	private ArrayList<Integer> codeSecretOrdi = new ArrayList<Integer>(); 
-	private ArrayList<Integer> codeSecretUser = new ArrayList<Integer> ();
-	private String codeSecret = "";
+	Scanner sc = new Scanner (System.in);
 	
-	public abstract void PayerGame(); 
+	protected ArrayList<Integer> codeSecretOrdi = new ArrayList<Integer>(); 
+	protected ArrayList<Integer> codeSecretUser = new ArrayList<Integer> ();
+	protected String codeSecret = "";
+	
+	public Mode() {
+		
+	}
 	
 	public Mode(ArrayList<Integer> codeSecretOrdi, ArrayList<Integer> codeSecretUser, String codeSecret) {
+		this.setCodeSecret (codeSecret);
 		this.setCodeSecretOrdi(codeSecretOrdi);
 		this.setCodeSecretUser (codeSecretUser);
-		this.setCodeSecret (codeSecret);
+		
 	}
 	
 	public ArrayList<Integer> getCodeSecretOrdi() {
@@ -40,5 +46,8 @@ public abstract class Mode {
 		this.codeSecret = codeSecret;
 	}
 
-	
+	public abstract void playerGame(); 
 }
+
+
+

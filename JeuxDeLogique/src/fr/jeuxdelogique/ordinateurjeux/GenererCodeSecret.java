@@ -7,8 +7,18 @@ public class GenererCodeSecret {
 	int configNombre = 4;
 	
 	public GenererCodeSecret() {
-		
+		this.setConfigNombre(configNombre);
 	}
+	
+	
+	public int getConfigNombre() {
+		return configNombre;
+	}
+
+	public void setConfigNombre(int configNombre) {
+		this.configNombre = configNombre;
+	}
+
 	
 	public String genererCodeSecret() {
 		
