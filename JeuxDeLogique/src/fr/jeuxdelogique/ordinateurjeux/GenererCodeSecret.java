@@ -2,14 +2,13 @@ package fr.jeuxdelogique.ordinateurjeux;
 
 import java.util.Random;
 
-public class GenererCodeSecret {
+public class GenererCodeSecret implements BoiteAOutils{
 
 	int configNombre = 4;
 	
 	public GenererCodeSecret() {
 		this.setConfigNombre(configNombre);
 	}
-	
 	
 	public int getConfigNombre() {
 		return configNombre;
@@ -39,4 +38,7 @@ public class GenererCodeSecret {
 		nb = borneInf+random.nextInt(borneSup-borneInf);
 		return nb;
 	}
+
+
+	
 }

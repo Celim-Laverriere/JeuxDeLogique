@@ -1,5 +1,6 @@
 package fr.jeuxdelogique.Modejeux;
 
+import fr.jeuxdelogique.ordinateurjeux.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,9 +8,11 @@ public abstract class Mode {
 
 	Scanner sc = new Scanner (System.in);
 	
-	protected ArrayList<Integer> codeSecretOrdi = new ArrayList<Integer>(); 
-	protected ArrayList<Integer> codeSecretUser = new ArrayList<Integer> ();
-	protected String codeSecret = "";
+	private ArrayList<Integer> codeSecretOrdi = new ArrayList<Integer>(); 
+	private ArrayList<Integer> codeSecretUser = new ArrayList<Integer> ();
+	private String codeSecret = "";
+	private String reponseUser = "";
+	private String resultat = "";
 	
 	public Mode() {
 		
@@ -27,6 +30,8 @@ public abstract class Mode {
 	}
 
 	public void setCodeSecretOrdi(ArrayList<Integer> codeSecretOrdi) {
+		CodeSecretMachine code = new CodeSecretMachine();
+		codeSecretOrdi = code.codeSecretOrdi(getCodeSecretOrdi(), codeSecret);
 		this.codeSecretOrdi = codeSecretOrdi;
 	}
 
@@ -35,6 +40,8 @@ public abstract class Mode {
 	}
 
 	public void setCodeSecretUser(ArrayList<Integer> codeSecretUser) {
+		ReponseUtilisateur code = new ReponseUtilisateur();
+		codeSecretUser = code.reponseUser(getCodeSecretUser(), reponseUser);
 		this.codeSecretUser = codeSecretUser;
 	}
 
@@ -43,10 +50,30 @@ public abstract class Mode {
 	}
 
 	public void setCodeSecret(String codeSecret) {
+		CodeSecret code = new CodeSecret();
+		codeSecret = code.codeSecret(codeSecret);
 		this.codeSecret = codeSecret;
 	}
 
-	public abstract void playerGame(); 
+	public String getReponseUser() {
+		return reponseUser;
+	}
+
+	public void setReponseUser(String reponseUser) {
+		this.reponseUser = reponseUser;
+	} 
+	
+	public String getResultat() {
+		return resultat;
+	}
+
+	public void setResultat(String resultat) {
+		this.resultat = resultat;
+		
+	}
+	
+	public abstract void playerGame();
+	
 }
 
 

@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 public class DuelRecherchePlusMoins extends Mode {
 
+	public DuelRecherchePlusMoins() {
+		
+	}
+	
 	public DuelRecherchePlusMoins(ArrayList<Integer> codeSecretOrdi, ArrayList<Integer> codeSecretUser,String codeSecret) {
 		super(codeSecretOrdi, codeSecretUser, codeSecret);
 		// TODO Auto-generated constructor stub

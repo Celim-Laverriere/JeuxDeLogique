@@ -1,17 +1,13 @@
 package fr.jeuxdelogique.Modejeux;
 
-import fr.jeuxdelogique.ordinateurjeux.*;
 import java.util.ArrayList;
 
 
 public class ChallengerRecherchePlusMoins extends Mode {
 	
-	private String reponseUser;
-	private String resultat = "";
-	
 	public ChallengerRecherchePlusMoins() {
-		codeSecret(getCodeSecret());
-		codeSecretOrdi(getCodeSecretOrdi());
+		setCodeSecret(getCodeSecret());
+		setCodeSecretOrdi(getCodeSecretOrdi());
 		playerGame();
 	}
 	
@@ -20,23 +16,6 @@ public class ChallengerRecherchePlusMoins extends Mode {
 	
 	}
 	
-	public void codeSecretOrdi(ArrayList<Integer> codeSecretOrdi) {
-
-		for (int i = 0; i < codeSecret.length(); i++ ) {
-			
-			System.out.print(Integer.parseInt( "" + codeSecret.charAt(i)));
-			codeSecretOrdi.add(Integer.parseInt( "" + codeSecret.charAt(i)));
-			
-		}
-			
-	}
-	
-	public void codeSecret(String code) {
-		GenererCodeSecret genererCode = new GenererCodeSecret();
-		code = genererCode.genererCodeSecret();
-		System.out.println("\n" + code);
-		codeSecret = code;
-	}
 
 	@Override
 	public void playerGame() {
@@ -46,43 +25,37 @@ public class ChallengerRecherchePlusMoins extends Mode {
 		
 		do {
 			
-			reponseUser = sc.nextLine();
+			setReponseUser(sc.nextLine());
+			setCodeSecretUser(getCodeSecretUser());
 			
-			for (int i = 0; i < reponseUser.length(); i++ ) {
-				
-				codeSecretUser.add(Integer.parseInt( "" + reponseUser.charAt(i)));
-
-			}
-			
-		
 			int i = 0;
 			
-			while ( i < codeSecretUser.size() && codeSecretUser.equals(getCodeSecretOrdi()) != true ) {
+			while ( i < getCodeSecretUser().size() && !getCodeSecretUser().equals(getCodeSecretOrdi())) {
 				
-					if (codeSecretUser.get(i) < codeSecretOrdi.get(i)) {
-						resultat += "+";
+					if (getCodeSecretUser().get(i) < getCodeSecretOrdi().get(i)) {
+						setResultat(getResultat() + "+");
 						i++;
-					} else if (codeSecretUser.get(i) > codeSecretOrdi.get(i)) {
-						resultat += "-";
+					} else if (getCodeSecretUser().get(i) > getCodeSecretOrdi().get(i)) {
+						setResultat(getResultat() + "-");
 						i++;
 					} else {
-						resultat += "=";
+						setResultat(getResultat() + "=");
 						i++;
 					}
 				}
 				
-				if (i == codeSecretUser.size()) {
-					System.out.println(resultat);
-					codeSecretUser.removeAll(codeSecretUser);
+				if (i == getCodeSecretUser().size()) {
+					System.out.println(getResultat());
+					getCodeSecretUser().removeAll(getCodeSecretUser());
 				}
 				
 			
-				if (codeSecretUser.equals(codeSecretOrdi)) {
-					System.out.println("Bravo ! Vous avez trouvé la bonne combinaison : " + reponseUser);
+				if (getCodeSecretUser().equals(getCodeSecretOrdi())) {
+					System.out.println("Bravo ! Vous avez trouvé la bonne combinaison : " + getReponseUser());
 					
 			}
 							
-		} while (codeSecretUser.equals(getCodeSecretOrdi()) != true);
+		} while (!getCodeSecretUser().equals(getCodeSecretOrdi()));
 		
 	}
 
