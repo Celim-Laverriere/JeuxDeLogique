@@ -34,24 +34,23 @@ public class RecherchePlusMoins extends Jeux{
 		
 		char nouvellePartie = 'O';
 		
-		if (choixMode.equals("Challenger")) {
-			do {
-				ChallengerRecherchePlusMoins challenger = new ChallengerRecherchePlusMoins();
-				
-				System.out.println("Voulez-vous faire une novelle partie O/N");
-				nouvellePartie = sc.nextLine().charAt(0);
-				nouvellePartie = Character.toUpperCase(nouvellePartie);
-				
-			} while (nouvellePartie == 'O');
+		do {
+			if (choixMode.equals("Challenger")) {
+				ChallengerRecherchePlusMoins challenger = new ChallengerRecherchePlusMoins();	
+			}
 			
-		}
-		
-		if (choixMode.equals("Defenseur")) {
-			DefenseurRecherchePlusMoins defenseur = new DefenseurRecherchePlusMoins(null, null, choixMode);
-		}
-		
-		if (choixMode.equals("Duel")) {
-			DuelRecherchePlusMoins duel = new DuelRecherchePlusMoins(null, null, choixMode);
-		}
+			if (choixMode.equals("Defenseur")) {
+				DefenseurRecherchePlusMoins defenseur = new DefenseurRecherchePlusMoins();
+			}
+			
+			if (choixMode.equals("Duel")) {
+				DuelRecherchePlusMoins duel = new DuelRecherchePlusMoins();
+			}
+			
+			System.out.println("Voulez-vous faire une novelle partie O/N");
+			nouvellePartie = sc.nextLine().charAt(0);
+			nouvellePartie = Character.toUpperCase(nouvellePartie);
+			
+		} while (nouvellePartie == 'O');
 	}
 }
