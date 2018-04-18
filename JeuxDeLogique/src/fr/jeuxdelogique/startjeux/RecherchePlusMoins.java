@@ -1,56 +1,37 @@
 package fr.jeuxdelogique.startjeux;
 
-import java.util.Scanner;
 
 import fr.jeuxdelogique.Modejeux.*;
-import fr.jeuxdelogique.menujeux.*;
 
-public class RecherchePlusMoins extends Jeux{
+public class RecherchePlusMoins extends Jeux {
 
-	Scanner sc = new Scanner (System.in);
-	private String choixMode;
 	
 	public RecherchePlusMoins() {
 		 
 	}
 	
 	public RecherchePlusMoins(String choixMode) {
-		this.setChoixMode(choixMode);
+		
 	}
 
-
-	public String getChoixMode() {
-		return choixMode;
-	}
-
-	public void setChoixMode(String choixMode) {
-		MenuMode menuMode = new MenuMode();
-		choixMode = menuMode.getMenu();
-		this.choixMode = choixMode;
-		mode();
+	public static void mode (String mode) {
+		
+		
+		if (mode.equals("Challenger")) {
+			ChallengerRecherchePlusMoins challenger = new ChallengerRecherchePlusMoins();
+			challenger.playerGame();
+		}
+		
+		if (mode.equals("Defenseur")) {
+			DefenseurRecherchePlusMoins defenseur = new DefenseurRecherchePlusMoins();
+			defenseur.playerGame();
+		}
+		
+		if (mode.equals("Duel")) {
+			DuelRecherchePlusMoins duel = new DuelRecherchePlusMoins();
+			duel.playerGame();
+		}
 	}
 	
-	public void mode () {
-		
-		char nouvellePartie = 'O';
-		
-		do {
-			if (choixMode.equals("Challenger")) {
-				ChallengerRecherchePlusMoins challenger = new ChallengerRecherchePlusMoins();	
-			}
-			
-			if (choixMode.equals("Defenseur")) {
-				DefenseurRecherchePlusMoins defenseur = new DefenseurRecherchePlusMoins();
-			}
-			
-			if (choixMode.equals("Duel")) {
-				DuelRecherchePlusMoins duel = new DuelRecherchePlusMoins();
-			}
-			
-			System.out.println("Voulez-vous faire une novelle partie O/N");
-			nouvellePartie = sc.nextLine().charAt(0);
-			nouvellePartie = Character.toUpperCase(nouvellePartie);
-			
-		} while (nouvellePartie == 'O');
-	}
+	
 }

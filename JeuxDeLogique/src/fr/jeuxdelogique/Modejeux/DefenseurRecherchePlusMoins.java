@@ -2,99 +2,28 @@ package fr.jeuxdelogique.Modejeux;
 
 import java.util.ArrayList;
 
-import fr.jeuxdelogique.ordinateurjeux.OutilsCodeSecret;
-
-public class DefenseurRecherchePlusMoins extends Mode {
-
-	private String codeSecret;
-	private ArrayList<Integer> codeSecretMachineTab = new ArrayList<Integer>();
-	private ArrayList<Integer> codeSecretUtilisateurTab = new ArrayList<Integer>();
-	private String reponseUtilisateur = "";
-	private int recupeNombreTab;
-	private String resultat = "";
+public class DefenseurRecherchePlusMoins extends ModeRecherche {
+	
 	
 	public DefenseurRecherchePlusMoins() {
-		playerGame();
-	}
-	
-	public DefenseurRecherchePlusMoins(ArrayList<Integer> codeSecretOrdi, ArrayList<Integer> codeSecretUser,String codeSecret) {
-		super(codeSecretOrdi, codeSecretUser, codeSecret);
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
-/********************************** "String" code secret Machine ********************************************/
-	public String getCodeSecret() {
-		return codeSecret;
+	public DefenseurRecherchePlusMoins(String codeSecret, ArrayList<Integer> codeSecretMachineTab,
+			ArrayList<Integer> codeSecretUtilisateurTab, ArrayList<Integer> codeSecretPlayerUtilisateurTab,
+			ArrayList<Integer> codeSecretPlayerAITab, String reponseUtilisateur, String resultat, int recupeNombreTab) {
+		super(codeSecret, codeSecretMachineTab, codeSecretUtilisateurTab, codeSecretPlayerUtilisateurTab, codeSecretPlayerAITab,
+				reponseUtilisateur, resultat, recupeNombreTab);
+		// TODO Auto-generated constructor stub
 	}
 
-	public void setCodeSecret(String codeSecret) {
-		OutilsCodeSecret code = new OutilsCodeSecret();
-		codeSecret = code.codeSecret(codeSecret);
-		this.codeSecret = codeSecret;
-	}
-
-/********************************** "Tableau" code secret Machine ********************************************/
-	public ArrayList<Integer> getCodeSecretMachineTab() {
-		return codeSecretMachineTab;
-	}
-
-	public void setCodeSecretMachineTab(ArrayList<Integer> codeSecretMachineTab) {
-		OutilsCodeSecret codeMachine = new OutilsCodeSecret();
-		codeSecretMachineTab = codeMachine.codeSecretAjoutTab(getCodeSecretMachineTab(), codeSecret);
-		this.codeSecretMachineTab = codeSecretMachineTab;
-	}
-	
-/********************************** "Tableau" code secret Utilisateur *****************************************/
-	public ArrayList<Integer> getCodeSecretUtilisateurTab() {
-		return codeSecretUtilisateurTab;
-	}
-
-	public void setCodeSecretUtilisateurTab(ArrayList<Integer> codeSecretUtilisateurTab) {
-		OutilsCodeSecret codeUtilisateur = new OutilsCodeSecret();
-		codeSecretUtilisateurTab = codeUtilisateur.codeSecretAjoutTab(getCodeSecretUtilisateurTab(), reponseUtilisateur);
-		this.codeSecretUtilisateurTab = codeSecretUtilisateurTab;
-	}
-
-/********************************** "String" Réponse Utilisateur *****************************************/
-	public String getReponseUtilisateur() {
-		return reponseUtilisateur;
-	}
-
-	public void setReponseUtilisateur(String reponseUtilisateur) {
-		this.reponseUtilisateur = reponseUtilisateur;
-	}
-	
-/********************************** La méthode récupere le nombre du tableau pour le modifier *****************************************/
-	public int getRecupeNombreTab() {
-		return recupeNombreTab;
-	}
-
-	public void setRecupeNombreTab(int recupeNombreTab, int nbre) {
-	
-		if (codeSecret.length() == 4) {
-			codeSecret = "";
-		}
-		
-		codeSecret += "" + (recupeNombreTab + (nbre));
-		this.recupeNombreTab = recupeNombreTab;
-	}
-
-/********************************** get et set non utilisés *****************************************/
-//	public String getResultat() {
-//		return resultat;
-//	}
-//
-//	public void setResultat(String resultat) {
-//		this.resultat = resultat;
-//	}
-
-/********************************************** Ci-dessous la méthode qui lance le jeu **********************************************************/
-	
-	@Override
 	public void playerGame() {
 
 		do {
+			
 			int compteur = 0;
+			
 			System.out.println("Entrez votre code secret que l'ordinateur devra trouver :");
 			
 			setReponseUtilisateur(sc.nextLine());

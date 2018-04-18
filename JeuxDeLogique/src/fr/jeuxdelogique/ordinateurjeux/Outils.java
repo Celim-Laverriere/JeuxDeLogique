@@ -3,11 +3,11 @@ package fr.jeuxdelogique.ordinateurjeux;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class OutilsCodeSecret {
+public class Outils {
 
 	int configNombre = 4;
 
-	public OutilsCodeSecret() {
+	public Outils() {
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -26,7 +26,7 @@ public class OutilsCodeSecret {
 			String nbreStr = "";
 			
 			for (int i = 0; i < configNombre; i++) {
-				String nbre = "" + nombre(1, 10);
+				String nbre = "" + nombre(0, 9);
 				nbreStr += nbre;
 			}
 			
@@ -45,18 +45,15 @@ public class OutilsCodeSecret {
 	
 	public String codeSecret(String code) {
 		code = genererCodeSecret();
-		System.out.println("\n" + code);
 		return code;
 	}
 	
 	public  ArrayList<Integer> codeSecretAjoutTab (ArrayList<Integer> codeSecretAjoutTab, String codeSecret) {
 
 		for (int i = 0; i < codeSecret.length(); i++ ) {
-			System.out.print(Integer.parseInt( "" + codeSecret.charAt(i)));
 			codeSecretAjoutTab.add(((Integer.parseInt( "" + codeSecret.charAt(i)))));
 		}
 		return codeSecretAjoutTab;	
 	}
-
 	
 }
