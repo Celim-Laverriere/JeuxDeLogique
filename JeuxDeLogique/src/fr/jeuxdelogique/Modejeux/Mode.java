@@ -2,20 +2,21 @@ package fr.jeuxdelogique.Modejeux;
 
 import java.util.Scanner;
 
+import fr.jeuxdelogique.ordinateurjeux.Outils;
+
 public abstract class Mode {
 
+	Outils outil = new Outils();
+	
 	Scanner sc = new Scanner (System.in);
 	
 	private static String modeDev;
 	
-	/*********************** Métode pour le mode développeur ******************************/
-	public static void modeDev(String modeDeveloppeur) {
-		setModeDev(modeDeveloppeur);
+	public Mode() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	/*********************** Métode ou est inseret le code du jeu ******************************/
-	public abstract void playerGame();
-	
 	public static String getModeDev() {
 		return modeDev;
 	}
@@ -24,6 +25,13 @@ public abstract class Mode {
 		Mode.modeDev = modeDev;
 	}
 
+	/*********************** Métode pour le mode développeur ******************************/
+	public static void modeDev(String modeDeveloppeur) {
+		setModeDev(modeDeveloppeur);
+	}
+
+	/*********************** Métode ou est inseret le code du jeu ******************************/
+	public abstract void playerGame();
 	
 		
 	

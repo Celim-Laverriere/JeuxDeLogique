@@ -7,6 +7,7 @@ import fr.jeuxdelogique.Modejeux.Mode;
 import fr.jeuxdelogique.menujeux.MenuJeux;
 import fr.jeuxdelogique.menujeux.MenuMode;
 
+
 /**
  * 
  * @author CELIM
@@ -16,16 +17,14 @@ import fr.jeuxdelogique.menujeux.MenuMode;
 public class MainJeux {
 
 	public static void main(String[] args) {
-		
-	String dev = args[0];
-	int reponse = 0;
 	
-	Mode.modeDev(dev);
+	modeDev(args);
+	
+	int reponse = 0;
 	
 	MenuJeux jeux = new MenuJeux();
 	MenuMode mode = new MenuMode();
-			
-		
+				
 		do {
 				
 			jeux.getMenu();
@@ -43,9 +42,9 @@ public class MainJeux {
 				
 					reponse = menu();
 					
-				} while(reponse == 1);
+			} while(reponse == 1);
 					
-			} while (reponse != 3);
+		} while (reponse != 3);
 		
 		
 	}
@@ -98,7 +97,17 @@ public class MainJeux {
 			
 		}
 		
-		
+		public static void modeDev (String[] args) {
+			
+			try {
+				
+				String dev = args[0];
+				Mode.modeDev(dev);
+			} catch (ArrayIndexOutOfBoundsException e) {
+				Mode.modeDev("pas dev");
+			}
+			
+		}
 		
 		
 }

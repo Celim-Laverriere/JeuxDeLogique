@@ -5,19 +5,17 @@ import java.util.Random;
 
 public class Outils {
 
-	int configNombre = 4;
+	Config configuration = new Config();
+	
+	public final int CONFIGURATION_NOMBRE = configuration.configNombre(0);
+	public final int CONFIGURATION_ESSAIS = configuration.configEssais(0);
 
 	public Outils() {
 		// TODO Auto-generated constructor stub
+		
 	}
 	
-	public int getConfigNombre() {
-		return configNombre;
-	}
 
-	public void setConfigNombre(int configNombre) {
-		this.configNombre = configNombre;
-	}
 	
 /********** Ci-dessous les méthodes pour générer un code secret **********/
 	
@@ -25,7 +23,7 @@ public class Outils {
 			
 			String nbreStr = "";
 			
-			for (int i = 0; i < configNombre; i++) {
+			for (int i = 0; i < CONFIGURATION_NOMBRE; i++) {
 				String nbre = "" + nombre(0, 9);
 				nbreStr += nbre;
 			}
@@ -50,7 +48,7 @@ public class Outils {
 	
 	public  ArrayList<Integer> codeSecretAjoutTab (ArrayList<Integer> codeSecretAjoutTab, String codeSecret) {
 
-		for (int i = 0; i < codeSecret.length(); i++ ) {
+		for (int i = 0; i < CONFIGURATION_NOMBRE; i++ ) {
 			codeSecretAjoutTab.add(((Integer.parseInt( "" + codeSecret.charAt(i)))));
 		}
 		return codeSecretAjoutTab;	

@@ -2,8 +2,10 @@ package fr.jeuxdelogique.Modejeux;
 
 import java.util.ArrayList;
 
+
 public class DefenseurRecherchePlusMoins extends ModeRecherche {
 	
+	 private long reponseUse; 
 	
 	public DefenseurRecherchePlusMoins() {
 		super();
@@ -19,17 +21,22 @@ public class DefenseurRecherchePlusMoins extends ModeRecherche {
 	}
 
 	public void playerGame() {
-
+		
 		do {
 			
 			int compteur = 0;
 			
-			System.out.println("Entrez votre code secret que l'ordinateur devra trouver :");
-			
-			setReponseUtilisateur(sc.nextLine());
+			System.out.println("Entrez votre code secret de " + outil.CONFIGURATION_NOMBRE + " chiffres que l'ordinateur devra trouver :");
+				
+			reponseUse = reponse(reponseUse);
+			setReponseUtilisateur(String.valueOf(reponseUse));
 			setCodeSecretUtilisateurTab(getCodeSecretUtilisateurTab());
 			setCodeSecret(getCodeSecret());
 			setCodeSecretMachineTab(getCodeSecretMachineTab());
+			
+			if (getModeDev().equals("Dev")) {
+				System.out.println("\n Mode développeur ! \n Code secret : " + getCodeSecret());
+			}
 			
 			
 			do {
@@ -54,9 +61,7 @@ public class DefenseurRecherchePlusMoins extends ModeRecherche {
 				if (i == getCodeSecretUtilisateurTab().size()) {
 					compteur++;
 					System.out.println("\n\nProposition : " + getCodeSecret() +" Réponse n° : " + compteur);
-					
 					getCodeSecretMachineTab().removeAll(getCodeSecretMachineTab());
-					
 					setCodeSecretMachineTab(getCodeSecretMachineTab());
 				}
 				
@@ -71,4 +76,5 @@ public class DefenseurRecherchePlusMoins extends ModeRecherche {
 		
 	}
 
+	
 }

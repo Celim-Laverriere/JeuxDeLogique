@@ -2,10 +2,12 @@ package fr.jeuxdelogique.Modejeux;
 
 import java.util.ArrayList;
 
+
 public class ChallengerRecherchePlusMoins extends ModeRecherche {
 		
+	 private long reponseUse; 
 	
-public ChallengerRecherchePlusMoins() {
+	public ChallengerRecherchePlusMoins() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -25,20 +27,19 @@ public ChallengerRecherchePlusMoins() {
 		
 		setCodeSecret(getCodeSecret());
 		setCodeSecretMachineTab(getCodeSecretMachineTab());
-		
+			
 		if (getModeDev().equals("Dev")) {
 			System.out.println("\n Mode développeur ! \n Code secret : " + getCodeSecret());
 		}
-	
-		System.out.println("\nC'est à vous de jouer : Enter votre nombre à " + getCodeSecret().length() + " chiffres" );
-		
-		
+			
 		do {
 			
-			
-			setReponseUtilisateur(sc.nextLine());
+			System.out.println("\nC'est à vous de jouer : Entrer votre nombre à " + getCodeSecret().length() + " chiffres" );
+				 
+			reponseUse = reponse(reponseUse);
+			setReponseUtilisateur((String.valueOf(reponseUse)));
 			setCodeSecretUtilisateurTab(getCodeSecretUtilisateurTab());
-			
+				
 			int i = 0;
 			
 			while ( i < getCodeSecretUtilisateurTab().size() && !getCodeSecretUtilisateurTab().equals(getCodeSecretMachineTab())) {
@@ -66,6 +67,9 @@ public ChallengerRecherchePlusMoins() {
 		System.out.println("\nBravo ! Vous avez trouvé la bonne combinaison : " + getReponseUtilisateur());
 	}
 
+
+}
+
 	
 	
 	
@@ -82,4 +86,4 @@ public ChallengerRecherchePlusMoins() {
 	
 	
 
-}
+

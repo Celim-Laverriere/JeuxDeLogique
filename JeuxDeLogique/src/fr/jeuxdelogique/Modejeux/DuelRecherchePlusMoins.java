@@ -1,11 +1,12 @@
 package fr.jeuxdelogique.Modejeux;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class DuelRecherchePlusMoins extends ModeRecherche {
 
-
-
+	private long reponseUse; 
+	
 	public DuelRecherchePlusMoins() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -26,66 +27,73 @@ public class DuelRecherchePlusMoins extends ModeRecherche {
 		
 		int compteur = 0;
 		
+		if (getModeDev().equals("Dev")) {
+			System.out.println("\n Mode développeur ! \n Code secret : " + getCodeSecret());
+		}
+			
 		/*********** Code générer par l'ordinateur ***********/
 		setCodeSecret(getCodeSecret());
 		setCodeSecretMachineTab(getCodeSecretMachineTab());	
 		
 		/*********** Code générer par l'utilisateur ***********/
-		System.out.println("\nEntrez votre code secret que l'ordinateur devra trouver :");
+		System.out.println("Entrez votre code secret de " + outil.CONFIGURATION_NOMBRE + " chiffres que l'ordinateur devra trouver :");
 		
-		setReponseUtilisateur(sc.nextLine());
+		reponseUse = reponse(reponseUse);
+		setReponseUtilisateur(String.valueOf(reponseUse));
 		setCodeSecretUtilisateurTab(getCodeSecretUtilisateurTab());
 		setCodeSecret(getCodeSecret());
 		setCodeSecretPlayerAITab(getCodeSecretPlayerAITab());
 	
-	do {
+		do {
 		
 		int i = 0;
-		System.out.println("\nC'est à vous de jouer : Enter votre nombre à " + getCodeSecretMachineTab().size()+ " chiffres" );
+		System.out.println("\nC'est à vous de jouer : Enter votre nombre à " + outil.CONFIGURATION_NOMBRE + " chiffres" );
 			
-			setReponseUtilisateur(sc.nextLine());
-			setCodeSecretPlayerUtilisateurTab(getCodeSecretPlayerUtilisateurTab());
+		reponseUse = reponse(reponseUse);
+		setReponseUtilisateur(String.valueOf(reponseUse));
+			
+		setCodeSecretPlayerUtilisateurTab(getCodeSecretPlayerUtilisateurTab());
 			
 		do {	
 			
-			while ( i < getCodeSecretPlayerUtilisateurTab().size() && !getCodeSecretPlayerUtilisateurTab().equals(getCodeSecretMachineTab())) {
-				
-					if (getCodeSecretPlayerUtilisateurTab().get(i) < getCodeSecretMachineTab().get(i)) {
-						setResultat(getResultat() + "+");
-						break;
-					} else if (getCodeSecretPlayerUtilisateurTab().get(i) > getCodeSecretMachineTab().get(i)) {
-						setResultat(getResultat() + "-");
-						break;
-					} else {
-						setResultat(getResultat() + "=");
-						break;
+				while ( i < getCodeSecretPlayerUtilisateurTab().size() && !getCodeSecretPlayerUtilisateurTab().equals(getCodeSecretMachineTab())) {
+					
+						if (getCodeSecretPlayerUtilisateurTab().get(i) < getCodeSecretMachineTab().get(i)) {
+							setResultat(getResultat() + "+");
+							break;
+						} else if (getCodeSecretPlayerUtilisateurTab().get(i) > getCodeSecretMachineTab().get(i)) {
+							setResultat(getResultat() + "-");
+							break;
+						} else {
+							setResultat(getResultat() + "=");
+							break;
+						}
 					}
-				}
 				
 				if (i == getCodeSecretPlayerUtilisateurTab().size()) {
-					System.out.println("\n\nProposition : "+ getCodeSecretPlayerUtilisateurTab().toString() +" Réponse : " + getResultat());
+					System.out.println("\n\nProposition : "+ getReponseUtilisateur() +" Réponse : " + getResultat());
 					setResultat("");
 					getCodeSecretPlayerUtilisateurTab().removeAll(getCodeSecretPlayerUtilisateurTab());
 				}
 							
-			while (i < getCodeSecretUtilisateurTab().size() && !getCodeSecretPlayerAITab().equals(getCodeSecretUtilisateurTab())) {
-						
-					if (getCodeSecretPlayerAITab().get(i) < getCodeSecretUtilisateurTab().get(i)) {
-						setRecupeNombreTab(getCodeSecretPlayerAITab().get(i), +1); 
-							break;
+				while (i < getCodeSecretUtilisateurTab().size() && !getCodeSecretPlayerAITab().equals(getCodeSecretUtilisateurTab())) {
 							
-					} else if(getCodeSecretPlayerAITab().get(i) > getCodeSecretUtilisateurTab().get(i)) {
-						setRecupeNombreTab(getCodeSecretPlayerAITab().get(i), -1);
-							break;
-						} else {
-							setRecupeNombreTab(getCodeSecretPlayerAITab().get(i), 0);
-							break;
-						}
+						if (getCodeSecretPlayerAITab().get(i) < getCodeSecretUtilisateurTab().get(i)) {
+							setRecupeNombreTab(getCodeSecretPlayerAITab().get(i), +1); 
+								break;
+								
+						} else if(getCodeSecretPlayerAITab().get(i) > getCodeSecretUtilisateurTab().get(i)) {
+							setRecupeNombreTab(getCodeSecretPlayerAITab().get(i), -1);
+								break;
+							} else {
+								setRecupeNombreTab(getCodeSecretPlayerAITab().get(i), 0);
+								break;
+							}
 					}
 					
 					if (i == getCodeSecretUtilisateurTab().size()) {
 						compteur++;
-						System.out.println("\n\nProposition : " + getCodeSecret() + " Réponse n° : " + compteur);
+						System.out.println("\n\nProposition de l'ordinateur : " + getCodeSecret() + " Réponse n° : " + compteur);
 						getCodeSecretPlayerAITab().removeAll(getCodeSecretPlayerAITab());
 						setCodeSecretPlayerAITab(getCodeSecretPlayerAITab());
 					}
@@ -96,15 +104,18 @@ public class DuelRecherchePlusMoins extends ModeRecherche {
 					}
 					
 					if (getCodeSecretPlayerUtilisateurTab().equals(getCodeSecretMachineTab())) {
-						System.out.println("\nBravo ! Vous avez trouvé la bonne combinaison : " + getCodeSecretPlayerUtilisateurTab());
+						System.out.println("\t****************************************************************");
+						System.out.println("\t*\t\t\t     BRAVO !                           *");
+						System.out.println("\t*\t Vous avez trouvé la bonne combinaison : " + getReponseUtilisateur() + "        *");						
+						System.out.println("\t****************************************************************");
 						break;
 					}
 						
 					i++;
 						
-		} while (i <= getCodeSecretUtilisateurTab().size() || i <= getCodeSecretPlayerUtilisateurTab().size());		
+			} while (i <= getCodeSecretUtilisateurTab().size() || i <= getCodeSecretPlayerUtilisateurTab().size());		
 						
-	} while (!getCodeSecretUtilisateurTab().equals(getCodeSecretPlayerAITab()) && !getCodeSecretMachineTab().equals(getCodeSecretPlayerUtilisateurTab()));
+		} while (!getCodeSecretUtilisateurTab().equals(getCodeSecretPlayerAITab()) && !getCodeSecretMachineTab().equals(getCodeSecretPlayerUtilisateurTab()));
 		
 			
 	}

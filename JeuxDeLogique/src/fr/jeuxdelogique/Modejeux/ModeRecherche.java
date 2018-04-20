@@ -1,8 +1,7 @@
 package fr.jeuxdelogique.Modejeux;
 
 import java.util.ArrayList;
-import fr.jeuxdelogique.ordinateurjeux.Outils;
-
+import java.util.InputMismatchException;
 
 public class ModeRecherche extends Mode {
 
@@ -40,8 +39,7 @@ public class ModeRecherche extends Mode {
 
 	public void setCodeSecret(String codeSecret) {
 		codeSecret = "";
-		Outils code = new Outils();
-		codeSecret = code.codeSecret(codeSecret);
+		codeSecret = outil.codeSecret(codeSecret);
 		this.codeSecret = codeSecret;
 	}
 
@@ -102,7 +100,7 @@ public class ModeRecherche extends Mode {
 
 	public void setRecupeNombreTab(int recupeNombreTab, int nbre) {
 	
-		if (codeSecret.length() == 4) {
+		if (codeSecret.length() == outil.CONFIGURATION_NOMBRE) {
 			codeSecret = "";
 		}
 		
@@ -110,7 +108,7 @@ public class ModeRecherche extends Mode {
 		this.recupeNombreTab = recupeNombreTab;
 	}
 
-/********************************** get et set non utilisés *****************************************/
+/********************************** get et set résiltat *****************************************/
 	public String getResultat() {
 		return resultat;
 	}
@@ -119,16 +117,56 @@ public class ModeRecherche extends Mode {
 		this.resultat = resultat;
 	}
 	
-	public ArrayList<Integer> tableau (ArrayList<Integer> tab, String code) {
-		Outils outilTableau = new Outils();
-		tab = outilTableau.codeSecretAjoutTab(tab, code);
-		return tab;
-	}
+	/**
+	 * 
+	 * @param tab
+	 * @param code
+	 * @return
+	 */
+		public ArrayList<Integer> tableau (ArrayList<Integer> tab, String code) {
+			tab = outil.codeSecretAjoutTab(tab, code);
+			return tab;
+		}
 	
-	@Override
-	public void playerGame() {
-		// TODO Auto-generated method stub
+	/**
+	 * 
+	 * @param rep
+	 * @return
+	 */
+		public long reponse (long rep) {
+			
+			String verif = "";
+			
+			do {
+				
+				try {
+					
+					rep = sc.nextLong();
+					verif = String.valueOf(rep);
+					
+					if (verif.length() != outil.CONFIGURATION_NOMBRE) {
+						System.out.println("Votre saissi est incorrecte, entrez de nouveau votre nombre à " + outil.CONFIGURATION_NOMBRE + " chiffres");
+						sc.nextLine();
+					}
+					
+				} catch (InputMismatchException e) {
+					System.out.println("Attention votre saisie n'est pas une  nombre : ");
+					System.out.println("Merci de renterez un nombre à " + outil.CONFIGURATION_NOMBRE + " chiffres");
+					sc.nextLine();
+				}
+				
+			} while (verif.length() != outil.CONFIGURATION_NOMBRE);
+			
+			return rep;
+		}
 		
-	}
+	/**
+	 * 
+	 */
+		@Override
+		public void playerGame() {
+			// TODO Auto-generated method stub
+			
+		}
 
 }
