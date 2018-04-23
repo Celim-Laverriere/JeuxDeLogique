@@ -5,22 +5,27 @@ import java.util.ArrayList;
 
 public class DefenseurRecherchePlusMoins extends ModeRecherche {
 	
-	 private long reponseUse; 
-	
 	public DefenseurRecherchePlusMoins() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public DefenseurRecherchePlusMoins(String codeSecret, ArrayList<Integer> codeSecretMachineTab,
-			ArrayList<Integer> codeSecretUtilisateurTab, ArrayList<Integer> codeSecretPlayerUtilisateurTab,
-			ArrayList<Integer> codeSecretPlayerAITab, String reponseUtilisateur, String resultat, int recupeNombreTab) {
+	public DefenseurRecherchePlusMoins(String codeSecret, ArrayList<Long> codeSecretMachineTab,
+			ArrayList<Long> codeSecretUtilisateurTab, ArrayList<Long> codeSecretPlayerUtilisateurTab,
+			ArrayList<Long> codeSecretPlayerAITab, String reponseUtilisateur, String resultat, int recupeNombreTab) {
 		super(codeSecret, codeSecretMachineTab, codeSecretUtilisateurTab, codeSecretPlayerUtilisateurTab, codeSecretPlayerAITab,
 				reponseUtilisateur, resultat, recupeNombreTab);
 		// TODO Auto-generated constructor stub
 	}
 
+	/********************************************** Ci-dessous la méthode qui lance le jeu **********************************************************/
+	
 	public void playerGame() {
+		
+		System.out.println("\t**********************************************");
+		System.out.println("\t*                RECHERCHE +/-               *");
+		System.out.println("\t*               MODE DEFENSEUR              *");
+		System.out.println("\t**********************************************");
 		
 		do {
 			
@@ -28,8 +33,7 @@ public class DefenseurRecherchePlusMoins extends ModeRecherche {
 			
 			System.out.println("Entrez votre code secret de " + outil.CONFIGURATION_NOMBRE + " chiffres que l'ordinateur devra trouver :");
 				
-			reponseUse = reponse(reponseUse);
-			setReponseUtilisateur(String.valueOf(reponseUse));
+			reponse();
 			setCodeSecretUtilisateurTab(getCodeSecretUtilisateurTab());
 			setCodeSecret(getCodeSecret());
 			setCodeSecretMachineTab(getCodeSecretMachineTab());

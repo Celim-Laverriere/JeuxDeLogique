@@ -46,10 +46,10 @@ public class Outils {
 		return code;
 	}
 	
-	public  ArrayList<Integer> codeSecretAjoutTab (ArrayList<Integer> codeSecretAjoutTab, String codeSecret) {
+	public  ArrayList<Long> codeSecretAjoutTab (ArrayList<Long> codeSecretAjoutTab, String codeSecret) {
 
 		for (int i = 0; i < CONFIGURATION_NOMBRE; i++ ) {
-			codeSecretAjoutTab.add(((Integer.parseInt( "" + codeSecret.charAt(i)))));
+			codeSecretAjoutTab.add(((Long.parseLong( "" + codeSecret.charAt(i)))));
 		}
 		return codeSecretAjoutTab;	
 	}

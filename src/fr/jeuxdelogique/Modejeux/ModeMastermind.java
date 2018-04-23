@@ -10,10 +10,10 @@ public class ModeMastermind extends Mode {
 	private String reponseUtilisateur = "";
 	private String resultat = "";
 	private int recupeNombreTab;
-	private ArrayList<Integer> codeSecretMachineTab = new ArrayList<Integer>();
-	private ArrayList<Integer> codeSecretUtilisateurTab = new ArrayList<Integer>();
-	private ArrayList<Integer> codeSecretPlayerUtilisateurTab = new ArrayList<Integer>();
-	private ArrayList<Integer> codeSecretPlayerAITab = new ArrayList<Integer>();
+	private ArrayList<Long> codeSecretMachineTab = new ArrayList<Long>();
+	private ArrayList<Long> codeSecretUtilisateurTab = new ArrayList<Long>();
+	private ArrayList<Long> codeSecretPlayerUtilisateurTab = new ArrayList<Long>();
+	private ArrayList<Long> codeSecretPlayerAITab = new ArrayList<Long>();
 	
 		
 	public ModeMastermind() {
@@ -21,8 +21,8 @@ public class ModeMastermind extends Mode {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ModeMastermind(String codeSecret, String reponseUtilisateur, String resultat, int recupeNombreTab, ArrayList<Integer> codeSecretMachineTab, ArrayList<Integer> codeSecretUtilisateurTab,
-						  ArrayList<Integer> codeSecretPlayerUtilisateurTab, ArrayList<Integer> codeSecretPlayerAITab) {
+	public ModeMastermind(String codeSecret, String reponseUtilisateur, String resultat, int recupeNombreTab, ArrayList<Long> codeSecretMachineTab, ArrayList<Long> codeSecretUtilisateurTab,
+						  ArrayList<Long> codeSecretPlayerUtilisateurTab, ArrayList<Long> codeSecretPlayerAITab) {
 			super();
 			this.codeSecret = codeSecret;
 			this.reponseUtilisateur = reponseUtilisateur;
@@ -65,27 +65,27 @@ public class ModeMastermind extends Mode {
 	}
 	
 /********************************** "Tableau" code secret Machine ********************************************/
-	public ArrayList<Integer> getCodeSecretMachineTab() {
+	public ArrayList<Long> getCodeSecretMachineTab() {
 		return codeSecretMachineTab;
 	}
 
-	public void setCodeSecretMachineTab(ArrayList<Integer> codeSecretMachineTab) {
+	public void setCodeSecretMachineTab(ArrayList<Long> codeSecretMachineTab) {
 		codeSecretMachineTab = tableau(getCodeSecretMachineTab(), codeSecret);
 		this.codeSecretMachineTab = codeSecretMachineTab;
 	}
 	
 /********************************** "Tableau" code secret Utilisateur *****************************************/
-	public ArrayList<Integer> getCodeSecretUtilisateurTab() {
+	public ArrayList<Long> getCodeSecretUtilisateurTab() {
 		return codeSecretUtilisateurTab;
 	}
 
-	public void setCodeSecretUtilisateurTab(ArrayList<Integer> codeSecretUtilisateurTab) {
+	public void setCodeSecretUtilisateurTab(ArrayList<Long> codeSecretUtilisateurTab) {
 		codeSecretUtilisateurTab = tableau(getCodeSecretUtilisateurTab(), reponseUtilisateur);
 		this.codeSecretUtilisateurTab = codeSecretUtilisateurTab;
 	}
 
 /********************************************************************************/
-	public ArrayList<Integer> tableau (ArrayList<Integer> tab, String code) {
+	public ArrayList<Long> tableau (ArrayList<Long> tab, String code) {
 		Outils outilTableau = new Outils();
 		tab = outilTableau.codeSecretAjoutTab(tab, code);
 		return tab;

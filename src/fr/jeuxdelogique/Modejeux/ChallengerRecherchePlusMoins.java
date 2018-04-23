@@ -5,16 +5,14 @@ import java.util.ArrayList;
 
 public class ChallengerRecherchePlusMoins extends ModeRecherche {
 		
-	 private long reponseUse; 
-	
 	public ChallengerRecherchePlusMoins() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ChallengerRecherchePlusMoins(String codeSecret, ArrayList<Integer> codeSecretMachineTab,
-			ArrayList<Integer> codeSecretUtilisateurTab, ArrayList<Integer> codeSecretPlayerUtilisateurTab,
-			ArrayList<Integer> codeSecretPlayerAITab, String reponseUtilisateur, String resultat, int recupeNombreTab) {
+	public ChallengerRecherchePlusMoins(String codeSecret, ArrayList<Long> codeSecretMachineTab,
+			ArrayList<Long> codeSecretUtilisateurTab, ArrayList<Long> codeSecretPlayerUtilisateurTab,
+			ArrayList<Long> codeSecretPlayerAITab, String reponseUtilisateur, String resultat, int recupeNombreTab) {
 		super(codeSecret, codeSecretMachineTab, codeSecretUtilisateurTab, codeSecretPlayerUtilisateurTab, codeSecretPlayerAITab,
 				reponseUtilisateur, resultat, recupeNombreTab);
 		// TODO Auto-generated constructor stub
@@ -24,6 +22,11 @@ public class ChallengerRecherchePlusMoins extends ModeRecherche {
 	
 	@Override
 	public void playerGame() {
+		
+		System.out.println("\t**********************************************");
+		System.out.println("\t*                RECHERCHE +/-               *");
+		System.out.println("\t*               MODE CHALLENGER              *");
+		System.out.println("\t**********************************************");
 		
 		setCodeSecret(getCodeSecret());
 		setCodeSecretMachineTab(getCodeSecretMachineTab());
@@ -36,8 +39,7 @@ public class ChallengerRecherchePlusMoins extends ModeRecherche {
 			
 			System.out.println("\nC'est à vous de jouer : Entrer votre nombre à " + getCodeSecret().length() + " chiffres" );
 				 
-			reponseUse = reponse(reponseUse);
-			setReponseUtilisateur((String.valueOf(reponseUse)));
+			reponse();
 			setCodeSecretUtilisateurTab(getCodeSecretUtilisateurTab());
 				
 			int i = 0;

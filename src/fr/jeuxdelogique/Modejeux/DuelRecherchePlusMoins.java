@@ -5,16 +5,14 @@ import java.util.ArrayList;
 
 public class DuelRecherchePlusMoins extends ModeRecherche {
 
-	private long reponseUse; 
-	
 	public DuelRecherchePlusMoins() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public DuelRecherchePlusMoins(String codeSecret, ArrayList<Integer> codeSecretMachineTab,
-			ArrayList<Integer> codeSecretUtilisateurTab, ArrayList<Integer> codeSecretPlayerUtilisateurTab,
-			ArrayList<Integer> codeSecretPlayerAITab, String reponseUtilisateur, String resultat, int recupeNombreTab) {
+	public DuelRecherchePlusMoins(String codeSecret, ArrayList<Long> codeSecretMachineTab,
+			ArrayList<Long> codeSecretUtilisateurTab, ArrayList<Long> codeSecretPlayerUtilisateurTab,
+			ArrayList<Long> codeSecretPlayerAITab, String reponseUtilisateur, String resultat, int recupeNombreTab) {
 		super(codeSecret, codeSecretMachineTab, codeSecretUtilisateurTab, codeSecretPlayerUtilisateurTab, codeSecretPlayerAITab,
 				reponseUtilisateur, resultat, recupeNombreTab);
 		// TODO Auto-generated constructor stub
@@ -24,6 +22,11 @@ public class DuelRecherchePlusMoins extends ModeRecherche {
 
 	@Override
 	public void playerGame() {
+		
+		System.out.println("\t**********************************************");
+		System.out.println("\t*                RECHERCHE +/-               *");
+		System.out.println("\t*                  MODE DUEL                 *");
+		System.out.println("\t**********************************************");
 		
 		int compteur = 0;
 			
@@ -38,8 +41,7 @@ public class DuelRecherchePlusMoins extends ModeRecherche {
 		/*********** Code générer par l'utilisateur ***********/
 		System.out.println("Entrez votre code secret de " + outil.CONFIGURATION_NOMBRE + " chiffres que l'ordinateur devra trouver :");
 		
-		reponseUse = reponse(reponseUse);
-		setReponseUtilisateur(String.valueOf(reponseUse));
+		reponse();
 		setCodeSecretUtilisateurTab(getCodeSecretUtilisateurTab());
 		setCodeSecret(getCodeSecret());
 		setCodeSecretPlayerAITab(getCodeSecretPlayerAITab());
@@ -49,9 +51,7 @@ public class DuelRecherchePlusMoins extends ModeRecherche {
 		int i = 0;
 		System.out.println("\nC'est à vous de jouer : Enter votre nombre à " + outil.CONFIGURATION_NOMBRE + " chiffres" );
 			
-		reponseUse = reponse(reponseUse);
-		setReponseUtilisateur(String.valueOf(reponseUse));
-			
+		reponse();
 		setCodeSecretPlayerUtilisateurTab(getCodeSecretPlayerUtilisateurTab());
 			
 		do {	

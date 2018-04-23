@@ -23,8 +23,7 @@ public class MainJeux {
 	
 	public static void main(String[] args) {
 	
-	logger.trace("msg de trace"); // E/S methods
-	logger.trace("msg de trace"); // E/S methods
+	
 	modeDev(args);
 	
 	int reponse = 0;

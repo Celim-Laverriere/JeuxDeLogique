@@ -4,31 +4,37 @@ import java.util.ArrayList;
 
 public class ChallengerMastermind extends ModeMastermind {
 
-	private ArrayList<Integer> codeSecretCopieTab = new ArrayList<Integer>();
+	private ArrayList<Long> codeSecretCopieTab = new ArrayList<Long>();
 
 	public ChallengerMastermind() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ChallengerMastermind(String codeSecret, String reponseUtilisateur, String resultat, int recupeNombreTab, ArrayList<Integer> codeSecretMachineTab, ArrayList<Integer> codeSecretUtilisateurTab,
-								ArrayList<Integer> codeSecretPlayerUtilisateurTab, ArrayList<Integer> codeSecretPlayerAITab) {
-		super(codeSecret, reponseUtilisateur, resultat, recupeNombreTab, codeSecretMachineTab, codeSecretUtilisateurTab, codeSecretPlayerUtilisateurTab, codeSecretPlayerAITab);
+	public ChallengerMastermind(String codeSecret, String reponseUtilisateur, String resultat, int recupeNombreTab,
+			ArrayList<Long> codeSecretMachineTab, ArrayList<Long> codeSecretUtilisateurTab,
+			ArrayList<Long> codeSecretPlayerUtilisateurTab, ArrayList<Long> codeSecretPlayerAITab) {
+		super(codeSecret, reponseUtilisateur, resultat, recupeNombreTab, codeSecretMachineTab, codeSecretUtilisateurTab,
+				codeSecretPlayerUtilisateurTab, codeSecretPlayerAITab);
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public ArrayList<Integer> getCodeSecretCopieTab() {
+	public ArrayList<Long> getCodeSecretCopieTab() {
 		return codeSecretCopieTab;
 	}
 
-	public void setCodeSecretCopieTab(ArrayList<Integer> codeSecretCopieTab) {
+	public void setCodeSecretCopieTab(ArrayList<Long> codeSecretCopieTab) {
 		codeSecretCopieTab.addAll(getCodeSecretMachineTab());
 		this.codeSecretCopieTab = codeSecretCopieTab;
 	}
 
 	@Override
 	public void playerGame() {
+		
+		System.out.println("\t**********************************************");
+		System.out.println("\t*                 MASTERMIND                 *");
+		System.out.println("\t*               MODE CHALLENGER              *");
+		System.out.println("\t**********************************************");
 		
 		setCodeSecret(getCodeSecret());
 		setCodeSecretMachineTab(getCodeSecretMachineTab());
