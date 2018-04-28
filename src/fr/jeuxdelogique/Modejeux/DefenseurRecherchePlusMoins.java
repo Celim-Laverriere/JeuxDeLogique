@@ -24,7 +24,7 @@ public class DefenseurRecherchePlusMoins extends ModeRecherche {
 		
 		System.out.println("\t**********************************************");
 		System.out.println("\t*                RECHERCHE +/-               *");
-		System.out.println("\t*               MODE DEFENSEUR              *");
+		System.out.println("\t*               MODE DEFENSEUR               *");
 		System.out.println("\t**********************************************");
 		
 		do {

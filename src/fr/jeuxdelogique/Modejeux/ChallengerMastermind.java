@@ -2,30 +2,23 @@ package fr.jeuxdelogique.Modejeux;
 
 import java.util.ArrayList;
 
-public class ChallengerMastermind extends ModeMastermind {
+import fr.jeuxdelogique.startjeux.Mastermind;
 
-	private ArrayList<Long> codeSecretCopieTab = new ArrayList<Long>();
+
+public class ChallengerMastermind extends ModeMastermind {
 
 	public ChallengerMastermind() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ChallengerMastermind(String codeSecret, String reponseUtilisateur, String resultat, int recupeNombreTab,
-			ArrayList<Long> codeSecretMachineTab, ArrayList<Long> codeSecretUtilisateurTab,
-			ArrayList<Long> codeSecretPlayerUtilisateurTab, ArrayList<Long> codeSecretPlayerAITab) {
-		super(codeSecret, reponseUtilisateur, resultat, recupeNombreTab, codeSecretMachineTab, codeSecretUtilisateurTab,
-				codeSecretPlayerUtilisateurTab, codeSecretPlayerAITab);
+	public ChallengerMastermind(String codeSecret, String reponseUtilisateur, int recupeNombreTab,
+			ArrayList<Byte> resultat_BienPlace_Present, ArrayList<Long> codeSecretMachineTab,
+			ArrayList<Long> codeSecretUtilisateurTab, ArrayList<Long> codeSecretPlayerUtilisateurTab,
+			ArrayList<Long> codeSecretPlayerAITab) {
+		super(codeSecret, reponseUtilisateur, recupeNombreTab, resultat_BienPlace_Present, codeSecretMachineTab,
+				codeSecretUtilisateurTab, codeSecretPlayerUtilisateurTab, codeSecretPlayerAITab);
 		// TODO Auto-generated constructor stub
-	}
-
-	public ArrayList<Long> getCodeSecretCopieTab() {
-		return codeSecretCopieTab;
-	}
-
-	public void setCodeSecretCopieTab(ArrayList<Long> codeSecretCopieTab) {
-		codeSecretCopieTab.addAll(getCodeSecretMachineTab());
-		this.codeSecretCopieTab = codeSecretCopieTab;
 	}
 
 	@Override
@@ -36,8 +29,8 @@ public class ChallengerMastermind extends ModeMastermind {
 		System.out.println("\t*               MODE CHALLENGER              *");
 		System.out.println("\t**********************************************");
 		
-		setCodeSecret(getCodeSecret());
-		setCodeSecretMachineTab(getCodeSecretMachineTab());
+		setCodeSecret(outil.codeSecret(getCodeSecret(), Mastermind.class.getSimpleName()));
+		setCodeSecretMachineTab(outil.codeSecretAjoutTab(getCodeSecretMachineTab(), getCodeSecret()));
 		
 		if (getModeDev().equals("Dev")) {
 			System.out.println("\n Mode développeur ! \n Code secret : " + getCodeSecret());
@@ -45,53 +38,30 @@ public class ChallengerMastermind extends ModeMastermind {
 	
 		System.out.println("\nC'est à vous de jouer : Enter votre nombre à " + getCodeSecret().length() + " chiffres" );
 		
-			do {
-				
-				
-				setReponseUtilisateur(sc.nextLine());
-				setCodeSecretUtilisateurTab(getCodeSecretUtilisateurTab());
-				
-				setCodeSecretCopieTab(getCodeSecretCopieTab());
-				
-				String reponsePresent = "";
-				String reponseBienPlace = "";
-				int conpteurBienPlace = 1;
-				int compteurPresent = 1;
-				int i = 0;
-				
-				while ( i < getCodeSecretUtilisateurTab().size() && !getCodeSecretUtilisateurTab().equals(getCodeSecretMachineTab())) {
-					
-						if (codeSecretCopieTab.contains(getCodeSecretUtilisateurTab().get(i)) && getCodeSecretMachineTab().get(i).equals(getCodeSecretUtilisateurTab().get(i))) {
-							reponseBienPlace = conpteurBienPlace++ + " Bien placé";
-							codeSecretCopieTab.set(i, null);
-						} 
-						
-						i++;
-					}	
-				
-				i = 0;
-				
-				while (i < getCodeSecretUtilisateurTab().size() && !getCodeSecretUtilisateurTab().equals(getCodeSecretMachineTab())) {
-					
-						if (codeSecretCopieTab.contains(getCodeSecretUtilisateurTab().get(i)) && !getCodeSecretMachineTab().get(i).equals(getCodeSecretUtilisateurTab().get(i))) {
-							reponsePresent = ", " + compteurPresent++ + " présent";
-							
-						} 
-						
-						i++;
-					}
-					
-					setResultat(reponseBienPlace + "" + reponsePresent);
-					
-					if (i == getCodeSecretUtilisateurTab().size()) {
-						System.out.println("\n\nProposition : "+ getReponseUtilisateur() + " Réponse : " + getResultat());
-						setResultat("");
-						getCodeSecretUtilisateurTab().removeAll(getCodeSecretUtilisateurTab());
-					}
-								
-			} while (!getCodeSecretUtilisateurTab().equals(getCodeSecretMachineTab()));
 		
-		System.out.println("\nBravo ! Vous avez trouvé la bonne combinaison : " + getReponseUtilisateur());
+		do {
+			
+			setCompteurEssai(1);
+			
+			enterClavier();
+			getCodeSecretUtilisateurTab().clear();
+			setCodeSecretUtilisateurTab(outil.codeSecretAjoutTab(getCodeSecretUtilisateurTab(), getReponseUtilisateur()));
+
+			setResultat_BienPlace_Present(resultatMastermind(getCodeSecretMachineTab(), getCodeSecretUtilisateurTab()));
+				
+			System.out.println("\n\nProposition : " + getReponseUtilisateur() + " Réponse : " + getResultat_BienPlace_Present().get(0) + " Bien placé et " + 
+			getResultat_BienPlace_Present().get(1) + " Présent !" + "\n Nombre d'aisé : " + getCompteurEssai());
+				
+			} while (!getCodeSecretUtilisateurTab().equals(getCodeSecretMachineTab()) && getCompteurEssai() != outil.CONFIGURATION_ESSAIS );
+		
+		if (getCodeSecretUtilisateurTab().equals(getCodeSecretMachineTab())){
+			
+			System.out.println("\nBravo ! Vous avez trouvé la bonne combinaison : " + getReponseUtilisateur());
+			
+		} else {
+			
+			System.out.println("\nPerdu ! La combinaison été : " + getCodeSecret());
+		}
 	}
 
 }

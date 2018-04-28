@@ -7,8 +7,6 @@ public class DuelMastermind extends Mode {
 	public DuelMastermind () {
 		
 	}
-	
-	
 
 	@Override
 	public void playerGame() {

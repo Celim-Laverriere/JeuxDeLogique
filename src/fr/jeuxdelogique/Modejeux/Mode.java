@@ -1,15 +1,14 @@
 package fr.jeuxdelogique.Modejeux;
 
 import java.util.Scanner;
-
 import fr.jeuxdelogique.ordinateurjeux.Outils;
 
 public abstract class Mode {
 
 	Outils outil = new Outils();
-	
 	Scanner sc = new Scanner (System.in);
 	
+	private int compteurEssai;
 	private static String modeDev;
 	
 	public Mode() {
@@ -17,6 +16,14 @@ public abstract class Mode {
 		// TODO Auto-generated constructor stub
 	}
 
+	public int getCompteurEssai() {
+		return compteurEssai;
+	}
+
+	public void setCompteurEssai(int compteurEssai) {
+		this.compteurEssai += compteurEssai;
+	}
+	
 	public static String getModeDev() {
 		return modeDev;
 	}
@@ -32,6 +39,8 @@ public abstract class Mode {
 
 	/*********************** Métode ou est inseret le code du jeu ******************************/
 	public abstract void playerGame();
+
+
 	
 		
 	

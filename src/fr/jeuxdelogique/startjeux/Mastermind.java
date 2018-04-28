@@ -24,6 +24,7 @@ public class Mastermind extends Jeux{
 		
 		if (mode.equals("Defenseur")) {
 			DefenseurMastermind defenseur = new DefenseurMastermind();
+			defenseur.playerGame();
 		}
 		
 		if (mode.equals("Duel")) {

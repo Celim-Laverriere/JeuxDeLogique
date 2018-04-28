@@ -10,38 +10,27 @@ public class Config  {
 	
 	public Config ()  { 
 		
-	}
-		
-	public int configNombre (int config) {
-		
 		try {
 			
 			InputStream is = new FileInputStream("config.properties");
 			p.load(is);
-			
-			config = Integer.parseInt(p.getProperty("nombre_de_case"));
-			
+				
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return config;
+	}
 		
+	public int configNombre () {
+		return Integer.parseInt(p.getProperty("nombre_de_case"));
 	}
 
-	public int configEssais(int config) {
-
-		try {
-			
-			InputStream is = new FileInputStream("config.properties");
-			p.load(is);
-			
-			config = Integer.parseInt(p.getProperty("nombre_essais"));
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return config;
+	public int configEssais() {	
+		 return Integer.parseInt(p.getProperty("nombre_essais"));	
 	}
 	
+	public String nombreUtilisable() {
+		return p.getProperty("chiffre_utilisabble");
+		
+	}
 	
 }

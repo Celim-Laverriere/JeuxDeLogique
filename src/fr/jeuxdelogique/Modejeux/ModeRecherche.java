@@ -1,7 +1,7 @@
 package fr.jeuxdelogique.Modejeux;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
+
 
 public class ModeRecherche extends Mode {
 
@@ -39,7 +39,7 @@ public class ModeRecherche extends Mode {
 
 	public void setCodeSecret(String codeSecret) {
 		codeSecret = "";
-		codeSecret = outil.codeSecret(codeSecret);
+		codeSecret = outil.codeSecret(codeSecret, codeSecret);
 		this.codeSecret = codeSecret;
 	}
 
@@ -130,16 +130,17 @@ public class ModeRecherche extends Mode {
 	
 	/**
 	 * 
-	 * @param rep
+	 * @param
 	 */
 		public void reponse () {
 			
+			int temp = 0;
+			 
 			do {
 				
 				try {
 					
-					long rep = Long.parseLong(reponseUtilisateur = (sc.nextLine()));
-					
+					Long.parseLong(reponseUtilisateur = (sc.nextLine()));
 					
 					if (reponseUtilisateur.length() != outil.CONFIGURATION_NOMBRE) {
 						System.out.println("Votre saissi est incorrecte, entrez de nouveau votre nombre à " + outil.CONFIGURATION_NOMBRE + " chiffres");
@@ -149,10 +150,10 @@ public class ModeRecherche extends Mode {
 				} catch (NumberFormatException e) {
 					System.out.println("Attention votre saisie n'est pas une  nombre : ");
 					System.out.println("Merci de renterez un nombre à " + outil.CONFIGURATION_NOMBRE + " chiffres");
-					reponse();
+					temp = 1;
 				}
 				
-			} while (reponseUtilisateur.length() != outil.CONFIGURATION_NOMBRE);
+			} while (reponseUtilisateur.length() != outil.CONFIGURATION_NOMBRE || temp == 1);
 			
 		}
 		

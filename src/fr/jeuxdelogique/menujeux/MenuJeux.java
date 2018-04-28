@@ -8,7 +8,6 @@ public class MenuJeux implements Menu{
 	Scanner sc = new Scanner(System.in);
 	
 	private String choixJeux = "";
-	private int reponseChoix;
 	
 	public String getChoixJeux() {
 		return choixJeux;
@@ -19,7 +18,9 @@ public class MenuJeux implements Menu{
 	}
 	
 	@Override
-	public String getMenu() {
+	public void getMenu() {
+		
+		int reponseChoix;
 		
 			do {
 				
@@ -53,7 +54,7 @@ public class MenuJeux implements Menu{
 				
 			} while (choixJeux != "RecherchePlusMoins" && choixJeux != "Mastermind");
 		
-		return choixJeux;
+		
 	}
 
 	
