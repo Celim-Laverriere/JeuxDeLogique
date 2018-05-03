@@ -2,6 +2,7 @@ package fr.jeuxdelogique.Modejeux;
 
 import java.util.ArrayList;
 
+import fr.jeuxdelogique.outils.CodeInvalideException;
 import fr.jeuxdelogique.startjeux.Mastermind;
 
 
@@ -13,54 +14,54 @@ public class ChallengerMastermind extends ModeMastermind {
 	}
 
 	public ChallengerMastermind(String codeSecret, String reponseUtilisateur, int recupeNombreTab,
-			ArrayList<Byte> resultat_BienPlace_Present, ArrayList<Long> codeSecretMachineTab,
+			ArrayList<Long> codeSecretOrdinateur, ArrayList<Byte> resultat_BienPlace_Present,
 			ArrayList<Long> codeSecretUtilisateurTab, ArrayList<Long> codeSecretPlayerUtilisateurTab,
-			ArrayList<Long> codeSecretPlayerAITab) {
-		super(codeSecret, reponseUtilisateur, recupeNombreTab, resultat_BienPlace_Present, codeSecretMachineTab,
-				codeSecretUtilisateurTab, codeSecretPlayerUtilisateurTab, codeSecretPlayerAITab);
+			ArrayList<Long> codeSecretPlayerAITab, String nombreGenerer, String initCodeAvecZero,
+			String initalisation_zero, String nombreMax) {
+		super(codeSecret, reponseUtilisateur, recupeNombreTab, codeSecretOrdinateur, resultat_BienPlace_Present,
+				codeSecretUtilisateurTab, codeSecretPlayerUtilisateurTab, codeSecretPlayerAITab, nombreGenerer,
+				initCodeAvecZero, initalisation_zero, nombreMax);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void playerGame() {
+	public void playerGame() throws CodeInvalideException {
 		
 		System.out.println("\t**********************************************");
 		System.out.println("\t*                 MASTERMIND                 *");
 		System.out.println("\t*               MODE CHALLENGER              *");
 		System.out.println("\t**********************************************");
 		
-		setCodeSecret(outil.codeSecret(getCodeSecret(), Mastermind.class.getSimpleName()));
-		setCodeSecretMachineTab(outil.codeSecretAjoutTab(getCodeSecretMachineTab(), getCodeSecret()));
-		
+		setCodeSecretOrdinateur(outil.codeSecretAjoutTab(outil.genererCodeSecret(Mastermind.class.getSimpleName())));
+				
 		if (getModeDev().equals("Dev")) {
-			System.out.println("\n Mode développeur ! \n Code secret : " + getCodeSecret());
+			System.out.println("\n Mode développeur ! \n Code secret : " + outil.chaineDeCaract(getCodeSecretOrdinateur()));
 		}
 	
-		System.out.println("\nC'est à vous de jouer : Enter votre nombre à " + getCodeSecret().length() + " chiffres" );
+		System.out.println("\nC'est à vous de jouer : Enter votre nombre à " + outil.CONFIGURATION_NOMBRE + " chiffres" );
 		
 		
 		do {
 			
 			setCompteurEssai(1);
 			
-			enterClavier();
-			getCodeSecretUtilisateurTab().clear();
-			setCodeSecretUtilisateurTab(outil.codeSecretAjoutTab(getCodeSecretUtilisateurTab(), getReponseUtilisateur()));
+			getCodeSecretPlayerUtilisateurTab().clear();
+			setCodeSecretPlayerUtilisateurTab(outil.codeSecretAjoutTab(enterClavier()));
 
-			setResultat_BienPlace_Present(resultatMastermind(getCodeSecretMachineTab(), getCodeSecretUtilisateurTab()));
+			setResultat_BienPlace_Present(resultatMastermind(getCodeSecretOrdinateur(), getCodeSecretPlayerUtilisateurTab()));
 				
-			System.out.println("\n\nProposition : " + getReponseUtilisateur() + " Réponse : " + getResultat_BienPlace_Present().get(0) + " Bien placé et " + 
+			System.out.println("\n\nProposition : " + outil.chaineDeCaract(getCodeSecretPlayerUtilisateurTab()) + " Réponse : " + getResultat_BienPlace_Present().get(0) + " Bien placé et " + 
 			getResultat_BienPlace_Present().get(1) + " Présent !" + "\n Nombre d'aisé : " + getCompteurEssai());
 				
-			} while (!getCodeSecretUtilisateurTab().equals(getCodeSecretMachineTab()) && getCompteurEssai() != outil.CONFIGURATION_ESSAIS );
+		} while (!getCodeSecretPlayerUtilisateurTab().equals(getCodeSecretOrdinateur()) && getCompteurEssai() < outil.CONFIGURATION_ESSAIS );
 		
-		if (getCodeSecretUtilisateurTab().equals(getCodeSecretMachineTab())){
+		if (getCodeSecretPlayerUtilisateurTab().equals(getCodeSecretOrdinateur())){
 			
-			System.out.println("\nBravo ! Vous avez trouvé la bonne combinaison : " + getReponseUtilisateur());
+			System.out.println("\nBravo ! Vous avez trouvé la bonne combinaison : " + outil.chaineDeCaract(getCodeSecretPlayerUtilisateurTab()));
 			
 		} else {
 			
-			System.out.println("\nPerdu ! La combinaison été : " + getCodeSecret());
+			System.out.println("\nPerdu ! La combinaison été : " + outil.chaineDeCaract(getCodeSecretOrdinateur()));
 		}
 	}
 

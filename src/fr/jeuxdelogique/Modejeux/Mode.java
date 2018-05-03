@@ -1,10 +1,13 @@
 package fr.jeuxdelogique.Modejeux;
 
 import java.util.Scanner;
-import fr.jeuxdelogique.ordinateurjeux.Outils;
+
+import fr.jeuxdelogique.outils.CodeInvalideException;
+import fr.jeuxdelogique.outils.Outils;
 
 public abstract class Mode {
 
+	
 	Outils outil = new Outils();
 	Scanner sc = new Scanner (System.in);
 	
@@ -37,8 +40,9 @@ public abstract class Mode {
 		setModeDev(modeDeveloppeur);
 	}
 
-	/*********************** Métode ou est inseret le code du jeu ******************************/
-	public abstract void playerGame();
+	/*********************** Métode ou est inseret le code du jeu 
+	 * @throws CodeInvalideException ******************************/
+	public abstract void playerGame() throws CodeInvalideException;
 
 
 	

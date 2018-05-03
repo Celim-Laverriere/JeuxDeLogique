@@ -1,12 +1,10 @@
 package fr.jeuxdelogique.startjeux;
 
-
-
 import java.util.Scanner;
-
 import fr.jeuxdelogique.Modejeux.Mode;
 import fr.jeuxdelogique.menujeux.MenuJeux;
 import fr.jeuxdelogique.menujeux.MenuMode;
+import fr.jeuxdelogique.outils.CodeInvalideException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,8 +19,7 @@ public class MainJeux {
 
 	static final Logger logger = LogManager.getLogger();
 	
-	public static void main(String[] args) {
-	
+	public static void main(String[] args) throws CodeInvalideException {
 	
 	modeDev(args);
 	

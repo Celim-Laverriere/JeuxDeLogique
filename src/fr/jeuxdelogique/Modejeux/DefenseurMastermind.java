@@ -2,44 +2,41 @@ package fr.jeuxdelogique.Modejeux;
 
 import java.util.ArrayList;
 
+import fr.jeuxdelogique.outils.CodeInvalideException;
 import fr.jeuxdelogique.startjeux.Mastermind;
 
 public class DefenseurMastermind extends ModeMastermind {
 	
-	String nombreMax = "";
+	
 	private Long nbre = 0L;
-	private String nombreGenerer = "";
-	private String initlocale = "";
-	private String initalisation_zero = "";
-	private ArrayList<String> tableauDePossibilité = new ArrayList<String>();
+	
+	private ArrayList<String> tableauDesPossibilites = new ArrayList<String>();
 	private ArrayList<Long> tableauTempDeSolution = new ArrayList<Long>();
-	private ArrayList<Byte> resultat_BienPlace_Present = new ArrayList<Byte>(); 
 	private ArrayList<Byte> resultacompare = new ArrayList<Byte>();
-	private ArrayList<String> nombreUtilisable = new ArrayList<String>();
+	
 
 
 	public DefenseurMastermind() {
 		super();
 		// TODO Auto-generated constructor stub
+		
+		initalisationNombreMinMax();
+		outil.init_tableau_nombre_utilisable();
+		
 	}
 
 	public DefenseurMastermind(String codeSecret, String reponseUtilisateur, int recupeNombreTab,
-			ArrayList<Byte> resultat_BienPlace_Present, ArrayList<Long> codeSecretMachineTab,
+			ArrayList<Long> codeSecretOrdinateur, ArrayList<Byte> resultat_BienPlace_Present,
 			ArrayList<Long> codeSecretUtilisateurTab, ArrayList<Long> codeSecretPlayerUtilisateurTab,
-			ArrayList<Long> codeSecretPlayerAITab) {
-		super(codeSecret, reponseUtilisateur, recupeNombreTab, resultat_BienPlace_Present, codeSecretMachineTab,
-				codeSecretUtilisateurTab, codeSecretPlayerUtilisateurTab, codeSecretPlayerAITab);
+			ArrayList<Long> codeSecretPlayerAITab, String nombreGenerer, String initCodeAvecZero,
+			String initalisation_zero, String nombreMax) {
+		super(codeSecret, reponseUtilisateur, recupeNombreTab, codeSecretOrdinateur, resultat_BienPlace_Present,
+				codeSecretUtilisateurTab, codeSecretPlayerUtilisateurTab, codeSecretPlayerAITab, nombreGenerer,
+				initCodeAvecZero, initalisation_zero, nombreMax);
 		// TODO Auto-generated constructor stub
 	}
 
-	public ArrayList<Byte> getResultaInitiale() {
-		return resultat_BienPlace_Present;
-	}
 
-	public void setResultaInitiale(ArrayList<Byte> arrayList) {
-		this.resultat_BienPlace_Present = arrayList;
-	}
-	
 	public ArrayList<Byte> getResultacompare() {
 		return resultacompare;
 	}
@@ -56,174 +53,123 @@ public class DefenseurMastermind extends ModeMastermind {
 		this.tableauTempDeSolution = tableauTempDeSolution;
 	}
 
-	public ArrayList<String> getTabDesPossibilité() {
-		return tableauDePossibilité;
+	public ArrayList<String> getTableauDesPossibilites() {
+		return tableauDesPossibilites;
 	}
 
-	public void setTabDesPossibilité(ArrayList<String> tabDesPossibilité) {
-		this.tableauDePossibilité = tabDesPossibilité;
+	public void setTableauDesPossibilites(ArrayList<String> tableauDesPossibilites) {
+		this.tableauDesPossibilites = tableauDesPossibilites;
 	}
+
 	
 	@Override
-	public void playerGame() {
+	public void playerGame() throws CodeInvalideException {
 
 		System.out.println("\t**********************************************");
 		System.out.println("\t*                 MASTERMIND                 *");
 		System.out.println("\t*               MODE DEFENSEUR               *");
 		System.out.println("\t**********************************************");
 		
-		initalisationNombreMinMax();
+		System.out.println(outil.CONFIGURATION_NOMBRE_UTILISABLE[1].toString());
 		
-		init_tableau_nombre_utilisable();
+		
 		
 		System.out.println("Entrez votre code secret de " + outil.CONFIGURATION_NOMBRE + " chiffres que l'ordinateur devra trouver :");
+		setCodeSecretUtilisateur(outil.codeSecretAjoutTab(enterClavier()));
 		
-		
-		enterClavier();
-		setCodeSecretUtilisateurTab(outil.codeSecretAjoutTab(getCodeSecretUtilisateurTab(), getReponseUtilisateur()));
-		setCodeSecret(outil.codeSecret(getCodeSecret(), Mastermind.class.getSimpleName()));
-		setCodeSecretMachineTab(outil.codeSecretAjoutTab(getCodeSecretMachineTab(), getCodeSecret()));
+		setCodeSecretPlayerOrdnateur(outil.codeSecretAjoutTab(outil.genererCodeSecret( Mastermind.class.getSimpleName())));
 		
 		
 		if (getModeDev().equals("Dev")) {
-			System.out.println("\n Mode développeur ! \n Code secret : " + getCodeSecret());
+			System.out.println("\n Mode développeur ! \n Code secret : " + outil.chaineDeCaract(getCodeSecretUtilisateur()));
 		}
 		
-		setResultaInitiale(resultatMastermind(getCodeSecretMachineTab(), getCodeSecretUtilisateurTab()));
+		setResultat_BienPlace_Present(resultatMastermind(getCodeSecretPlayerOrdnateur(), getCodeSecretUtilisateur()));
 		
-		while(initalisation_zero.length() == outil.CONFIGURATION_NOMBRE && nombreGenerer.length() <= initalisation_zero.length() && Long.parseLong(nombreGenerer) <= Long.parseLong(nombreMax)) {
+		setTableauTempDeSolution(outil.codeSecretAjoutTab(getInitalisation_zero()));
+		
+		while(!getCodeSecretPlayerOrdnateur().equals(getCodeSecretUtilisateur()) && Long.parseLong(getNombreGenerer()) <= Long.parseLong(getNombreMax())) {
 			
-			genereNombreSolution(); 
+			setResultacompare(resultatMastermind(getCodeSecretPlayerOrdnateur(), getTableauTempDeSolution()));
 			
-			setResultacompare(resultatMastermind(getCodeSecretMachineTab(), getTableauTempDeSolution()));
 			
-			if (getResultacompare().get(0).equals(getResultaInitiale().get(0))) {
-				tableauDePossibilité.add(initlocale);
-			}		
+			if (getResultat_BienPlace_Present().equals(getResultacompare())) {
+				tableauDesPossibilites.add(getInitCodeAvecZero());
+			}
 			
+			setTableauTempDeSolution(outil.codeSecretAjoutTab(genereNombreSolution()));
 		}
-		setCompteurEssai(1);
-		nombreGenerer = "";
+		
+		setNombreGenerer("");
 		
 		
-		while (!getCodeSecretMachineTab().equals(getCodeSecretUtilisateurTab()) && getTabDesPossibilité().size() != 1 ) {
+		while (!getCodeSecretPlayerOrdnateur().equals(getCodeSecretUtilisateur()) 
+				&& getTableauDesPossibilites().size() > 1 && getCompteurEssai() < outil.CONFIGURATION_ESSAIS) {
 			
 			ArrayList<String> tableauTemp = new ArrayList<String>();
-			
-			int indiceAuHasard = (int) (Math.random() * (getTabDesPossibilité().size() - 1));
-			setCodeSecret(getTabDesPossibilité().get(indiceAuHasard));
-			getCodeSecretMachineTab().clear();
-			setCodeSecretMachineTab(outil.codeSecretAjoutTab(getCodeSecretMachineTab(), getCodeSecret()));
-			
-			
-			setResultaInitiale(resultatMastermind(getCodeSecretMachineTab(), getCodeSecretUtilisateurTab()));
+	
+			int indiceAuHasard = (int) (Math.random() * (getTableauDesPossibilites().size() - 0));
+			getCodeSecretPlayerOrdnateur().clear();
+			setCodeSecretPlayerOrdnateur(outil.codeSecretAjoutTab(getTableauDesPossibilites().get(indiceAuHasard)));
 			
 			
-			for (int i = 0; i < getTabDesPossibilité().size(); i++) {
-								
-				setResultacompare(resultatMastermind(getCodeSecretMachineTab(), initialisationTab(getTabDesPossibilité().get(i))));
+			setResultat_BienPlace_Present(resultatMastermind(getCodeSecretPlayerOrdnateur(), getCodeSecretUtilisateur()));
+			
+			
+			for (int i = 0; i < getTableauDesPossibilites().size(); i++) {
 				
-				if (getResultacompare().get(0).equals(getResultaInitiale().get(0))){
-					
-					tableauTemp.add(getTabDesPossibilité().get(i));
-				}
+				getTableauTempDeSolution().clear();
+				setResultacompare(resultatMastermind(getCodeSecretPlayerOrdnateur(), outil.codeSecretAjoutTab(getTableauDesPossibilites().get(i))));
+
+				if (getResultat_BienPlace_Present().equals(getResultacompare())){
+					tableauTemp.add(getTableauDesPossibilites().get(i));
+				}	
 			}	
-				
 			
-			getTabDesPossibilité().clear();
-			tableauDePossibilité.addAll(tableauTemp);
+			getTableauDesPossibilites().clear();
+			getTableauDesPossibilites().addAll(tableauTemp);
+			
 			setCompteurEssai(1);
 			
-			System.out.println("\n Longeure du tableau : " + tableauDePossibilité.size() + " Présent : "+ tableauDePossibilité.contains(getReponseUtilisateur()) +"\n  Essai : " 
-			+ getCompteurEssai() + "\n resultat initiale : " + getResultaInitiale() + "\n resultat à comparer : " + getResultacompare() );
+			System.out.println("\n Longeure du tableau : " + tableauDesPossibilites.size() + " Présent : "+ tableauDesPossibilites.contains(outil.chaineDeCaract(getCodeSecretUtilisateur())) +"\n  Essai : " 
+			+ getCompteurEssai() + "\n resultat initiale : " + getResultat_BienPlace_Present() + "\n resultat à comparer : " + getResultacompare() );
 		}
 	
-		if (getCodeSecret().equals(getReponseUtilisateur())) {
-			System.out.println("\nBravo ! L'ordinateur a trouvé le code secret : " + getCodeSecret());
+		if (getCodeSecretUtilisateur().equals(getCodeSecretPlayerOrdnateur()) || getTableauDesPossibilites().get(0).equals(outil.chaineDeCaract(getCodeSecretUtilisateur())) ) {
+			
+			System.out.println("\nBravo ! L'ordinateur a trouvé le code secret : " + outil.chaineDeCaract(getCodeSecretPlayerOrdnateur()));
+			
 		} else {
-			System.out.println("\nBravo ! L'ordinateur a trouvé le code secret : " + getTabDesPossibilité());
+			
+			System.out.println("\nBravo ! L'ordinateur n'a pas trouvé le code secret : " + tableauDesPossibilites.contains(outil.chaineDeCaract(getCodeSecretUtilisateur())) 
+			+ "  " + outil.chaineDeCaract(getCodeSecretUtilisateur()));
 		}
 	}
-	
-	public String initalisationNombreMinMax() {
-		
-		for (int i = 0; i < outil.CONFIGURATION_NOMBRE; i++ ) {
-			initalisation_zero += "0";
-		}
-		
-		initialisationTab(initalisation_zero);
-		
-		for (int i = 0; i < initalisation_zero.length(); i++) {
-			nombreMax += "" + Integer.parseInt(outil.CONFIGURATION_NOMBRE_UTILISABLE[1]) ;
-		}
-		
-		nombreGenerer = initalisation_zero;
-		return initalisation_zero;
-	}
-	
-	
-	public void genereNombreSolution() {
+
+	/********************************************************************************************/
+	public String genereNombreSolution() {
 		
 		do {
 
-			nombreGenerer = "" + (nbre = nbre + 1L);
+			setNombreGenerer("" + (nbre = nbre + 1L));
 			
-			if (tableauTempDeSolution.get(0) == 0 && verificationNombreUtilisable(nombreGenerer) != true){
-				int i = nombreGenerer.length();
-				initlocale = initalisation_zero.substring(i, initalisation_zero.length());
-				initlocale = initlocale + nombreGenerer;
-				setTableauTempDeSolution(initialisationTab(initlocale));
+			if (tableauTempDeSolution.get(0) == 0 && outil.verificationNombreUtilisable(getNombreGenerer()) != true){
+				int i = getNombreGenerer().length();
+				setInitCodeAvecZero(getInitalisation_zero().substring(i, getInitalisation_zero().length()));
+				setInitCodeAvecZero(getInitCodeAvecZero() + getNombreGenerer());
 			}
 				
-			if (tableauTempDeSolution.get(0) != 0 && nombreGenerer.length() <= initalisation_zero.length() && Long.parseLong(nombreGenerer) <= Long.parseLong(nombreMax) && verificationNombreUtilisable(nombreGenerer) != true) {
-				initlocale = nombreGenerer;
-				setTableauTempDeSolution(initialisationTab(initlocale));
+			if (tableauTempDeSolution.get(0) != 0 && outil.verificationNombreUtilisable(getNombreGenerer()) != true) {
+				setInitCodeAvecZero(getNombreGenerer());
 			}
-			
-		} while (verificationNombreUtilisable(nombreGenerer) != false);
+			 
+		} while (!outil.verificationNombreUtilisable(getNombreGenerer()) != true && Long.parseLong(getNombreGenerer()) <= Long.parseLong(getNombreMax()));
 		
-	
+		getTableauTempDeSolution().clear();
+		
+		return getInitCodeAvecZero();
 	}
 	
-	private ArrayList<Long> initialisationTab(String ini) {
-		
-		if (initalisation_zero.length() == outil.CONFIGURATION_NOMBRE && nombreGenerer.length() <= initalisation_zero.length()) {
-		
-			tableauTempDeSolution.clear();
-			
-			for (int i = 0; i < outil.CONFIGURATION_NOMBRE; i++ ) {
-			
-				tableauTempDeSolution.add(((Long.parseLong( "" + ini.charAt(i)))));
-			}
-		}
-		
-		return tableauTempDeSolution;	
-	}
 	
-	public void init_tableau_nombre_utilisable () {
-		
-		int nbreMin = Integer.parseInt(outil.CONFIGURATION_NOMBRE_UTILISABLE[0]);
-		int nbreMax = Integer.parseInt(outil.CONFIGURATION_NOMBRE_UTILISABLE[1]);
-		
-		for (int i = 0 ; i < 10; i++) {
-		
-			if (i > nbreMin && nbreMax < i && i < 10 ) {
-				
-				nombreUtilisable.add("" + i);
-			}		
-		}
-	}
-	
-	public boolean verificationNombreUtilisable (String nombre_a_verifier) {
-		
-		boolean resultat = false;
-	
-		for (int i = 0; i < nombreUtilisable.size() && resultat == false; i++) {
-			
-			resultat = nombre_a_verifier.contains(nombreUtilisable.get(i));		
-		}
-		
-		return resultat;
-	}
 	
 }

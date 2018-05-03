@@ -1,7 +1,8 @@
 package fr.jeuxdelogique.startjeux;
 
 import fr.jeuxdelogique.Modejeux.*;
-import fr.jeuxdelogique.menujeux.*;
+import fr.jeuxdelogique.outils.CodeInvalideException;
+
 
 public class Mastermind extends Jeux{
 
@@ -15,7 +16,7 @@ public class Mastermind extends Jeux{
 	}
 
 	
-	public static void mode (String mode) {
+	public static void mode (String mode) throws CodeInvalideException {
 		
 		if (mode.equals("Challenger")) {
 			ChallengerMastermind challenger = new ChallengerMastermind();
@@ -29,6 +30,7 @@ public class Mastermind extends Jeux{
 		
 		if (mode.equals("Duel")) {
 			DuelMastermind duel = new DuelMastermind();
+			duel.playerGame();
 		}
 	}
 }

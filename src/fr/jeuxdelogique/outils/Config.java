@@ -1,4 +1,4 @@
-package fr.jeuxdelogique.ordinateurjeux;
+package fr.jeuxdelogique.outils;
 
 import java.io.FileInputStream;
 import java.io.InputStream;

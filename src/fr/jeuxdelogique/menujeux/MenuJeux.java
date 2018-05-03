@@ -3,6 +3,8 @@ package fr.jeuxdelogique.menujeux;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import fr.jeuxdelogique.outils.CodeInvalideException;
+
 public class MenuJeux implements Menu{
 
 	Scanner sc = new Scanner(System.in);
@@ -18,45 +20,47 @@ public class MenuJeux implements Menu{
 	}
 	
 	@Override
-	public void getMenu() {
-		
-		int reponseChoix;
-		
-			do {
-				
-				System.out.println("\n\t\t*******************************");
-				System.out.println("\t\t*          MENU JEUX          *");
-				System.out.println("\t\t*******************************\n");
-				System.out.println("\t - Pour jouer à Recherche +/- tape : 1 \n\t - Pour jouer à Mastermind tape : 2");
-			
-					try { 
-					
-						reponseChoix = sc.nextInt();
-						
-						switch (reponseChoix) {
-						
-							case 1:
-								choixJeux = "RecherchePlusMoins";
-								break;
-								
-							case 2:
-								choixJeux = "Mastermind";
-								break;
-								
-							default :
-								System.out.println("Votre saisi est incorecte : ");
-						}
-					
-					} catch (InputMismatchException e){
-						System.out.println("Votre saisi est incorecte : ");
-						sc.nextLine();
+	public void getMenu() throws CodeInvalideException {
+
+		String reponseChoix = "";
+
+		System.out.println("\n\t\t*******************************");
+		System.out.println("\t\t*          MENU JEUX          *");
+		System.out.println("\t\t*******************************\n");
+		System.out.println("\t - Pour jouer à Recherche +/- tape : 1 \n\t - Pour jouer à Mastermind tape : 2");
+
+		do {	
+
+			try { 
+
+				reponseChoix = sc.nextLine();
+
+					if (!reponseChoix.equals("1") && !reponseChoix.equals("2")) {
+						throw new CodeInvalideException("\nAttention votre saisie est incorecte : ! \n- Pour jouer à Recherche +/- tape : 1 \n- Pour jouer à Mastermind tape : 2");
 					}
-				
-			} while (choixJeux != "RecherchePlusMoins" && choixJeux != "Mastermind");
-		
-		
+					
+			} catch (CodeInvalideException e){
+				System.out.println(e.getLocalizedMessage());
+				reponseChoix = "modeErre";
+			}
+
+			switch (reponseChoix) {
+
+			case "1":
+				choixJeux = "RecherchePlusMoins";
+				break;
+
+			case "2":
+				choixJeux = "Mastermind";
+				break;
+			}
+
+		} while (reponseChoix.equals("modeErre"));
+
+
 	}
 
+	
 	
 }
 

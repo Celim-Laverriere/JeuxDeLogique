@@ -124,7 +124,7 @@ public class ModeRecherche extends Mode {
 	 * @return
 	 */
 		public ArrayList<Long> tableau (ArrayList<Long> tab, String code) {
-			tab = outil.codeSecretAjoutTab(tab, code);
+			tab = outil.codeSecretAjoutTab(code);
 			return tab;
 		}
 	

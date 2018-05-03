@@ -1,7 +1,9 @@
 package fr.jeuxdelogique.menujeux;
 
-public interface Menu {
+import fr.jeuxdelogique.outils.CodeInvalideException;
 
-	public void getMenu();
+public interface Menu {
+	
+	public void getMenu() throws CodeInvalideException;
 	
 }
