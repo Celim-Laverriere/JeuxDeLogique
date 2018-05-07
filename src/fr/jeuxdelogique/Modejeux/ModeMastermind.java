@@ -9,15 +9,13 @@ import fr.jeuxdelogique.outils.CodeInvalideException;
 public class ModeMastermind extends Mode {
 
 	private String codeSecret;
-	private String reponseUtilisateur = "";
-	private int recupeNombreTab;
+	private ArrayList<Byte>  resultatBienPlacePresentUtilisateur = new ArrayList<Byte>();
 	private ArrayList<Long> codeSecretOrdinateur = new ArrayList<Long>();
 	private ArrayList<Byte> resultat_BienPlace_Present = new ArrayList<Byte>(); 
 	private ArrayList<Long> codeSecretUtilisateur = new ArrayList<Long>();
 	private ArrayList<Long> codeSecretUtilisateurTab = new ArrayList<Long>();
 	private ArrayList<Long> codeSecretPlayerUtilisateur = new ArrayList<Long>();
 	private ArrayList<Long> codeSecretPlayerOrdnateur = new ArrayList<Long>();
-//	private ArrayList<String> nombreUtilisable = new ArrayList<String>();
 	private String nombreGenerer = "";
 	private String initCodeAvecZero = "";
 	private String initalisation_zero = "";	
@@ -29,27 +27,25 @@ public class ModeMastermind extends Mode {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ModeMastermind(String codeSecret, String reponseUtilisateur, int recupeNombreTab,
-			ArrayList<Long> codeSecretOrdinateur, ArrayList<Byte> resultat_BienPlace_Present,
-			ArrayList<Long> codeSecretUtilisateurTab, ArrayList<Long> codeSecretPlayerUtilisateurTab,
-			ArrayList<Long> codeSecretPlayerAITab, String nombreGenerer, String initCodeAvecZero,
-			String initalisation_zero, String nombreMax) {
-		super();
+	public ModeMastermind(String codeSecret, ArrayList<Byte> resultatBienPlacePresentUtilisateur, ArrayList<Long> codeSecretOrdinateur,
+						  ArrayList<Byte> resultat_BienPlace_Present, ArrayList<Long> codeSecretUtilisateur, ArrayList<Long> codeSecretUtilisateurTab,
+						  ArrayList<Long> codeSecretPlayerUtilisateur, ArrayList<Long> codeSecretPlayerOrdnateur, String nombreGenerer,
+						  String initCodeAvecZero, String initalisation_zero, String nombreMax) {
 		this.codeSecret = codeSecret;
-		this.reponseUtilisateur = reponseUtilisateur;
-		this.recupeNombreTab = recupeNombreTab;
+		this.resultatBienPlacePresentUtilisateur = resultatBienPlacePresentUtilisateur;
 		this.codeSecretOrdinateur = codeSecretOrdinateur;
 		this.resultat_BienPlace_Present = resultat_BienPlace_Present;
+		this.codeSecretUtilisateur = codeSecretUtilisateur;
 		this.codeSecretUtilisateurTab = codeSecretUtilisateurTab;
-		this.codeSecretPlayerUtilisateur = codeSecretPlayerUtilisateurTab;
-		this.setCodeSecretPlayerOrdnateur(codeSecretPlayerAITab);
+		this.codeSecretPlayerUtilisateur = codeSecretPlayerUtilisateur;
+		this.codeSecretPlayerOrdnateur = codeSecretPlayerOrdnateur;
 		this.nombreGenerer = nombreGenerer;
 		this.initCodeAvecZero = initCodeAvecZero;
 		this.initalisation_zero = initalisation_zero;
 		this.nombreMax = nombreMax;
 	}
 
-/********************************** "String" code secret Machine ********************************************/
+	/********************************** "String" code secret Machine ********************************************/
 	public String getCodeSecret() {
 		return codeSecret;
 	}
@@ -57,16 +53,26 @@ public class ModeMastermind extends Mode {
 	public void setCodeSecret(String codeSecret) {
 		this.codeSecret = codeSecret;
 	}
-	
-/********************************** "String" Réponse Utilisateur *****************************************/
-	public String getReponseUtilisateur() {
-		return reponseUtilisateur;
+
+	/********************************** "String" Réponse bien placé / présent Utilisateur *****************************************/
+
+	public ArrayList<Byte> getResultatBienPlacePresentUtilisateur() {
+		return resultatBienPlacePresentUtilisateur;
 	}
 
-	public void setReponseUtilisateur(String reponseUtilisateur) {
-		this.reponseUtilisateur = reponseUtilisateur;
+	public void setResultatBienPlacePresentUtilisateur(ArrayList<Byte> resultatBienPlacePresentUtilisateur) {
+		this.resultatBienPlacePresentUtilisateur = resultatBienPlacePresentUtilisateur;
 	}
-	
+
+
+	public ArrayList<Long> getCodeSecretPlayerUtilisateur() {
+		return codeSecretPlayerUtilisateur;
+	}
+
+	public void setCodeSecretPlayerUtilisateur(ArrayList<Long> codeSecretPlayerUtilisateur) {
+		this.codeSecretPlayerUtilisateur = codeSecretPlayerUtilisateur;
+	}
+
 	/********************************** Résultat bien placé et présent *****************************************/
 	public ArrayList<Byte> getResultat_BienPlace_Present() {
 		return resultat_BienPlace_Present;
@@ -138,9 +144,21 @@ public class ModeMastermind extends Mode {
 		this.initCodeAvecZero = initCodeAvecZero;
 	}
 
-/**
- * @return 
- * @throws CodeInvalideException ******************************************************************************/
+	public ArrayList<Long> getCodeSecretPlayerUtilisateurTab() {
+		return codeSecretPlayerUtilisateur;
+	}
+
+	public void setCodeSecretPlayerUtilisateurTab(ArrayList<Long> codeSecretPlayerUtilisateurTab) {
+		this.codeSecretPlayerUtilisateur = codeSecretPlayerUtilisateurTab;
+	}
+
+	public ArrayList<Long> getCodeSecretPlayerOrdnateur() {
+		return codeSecretPlayerOrdnateur;
+	}
+
+	public void setCodeSecretPlayerOrdnateur(ArrayList<Long> codeSecretPlayerOrdnateur) {
+		this.codeSecretPlayerOrdnateur = codeSecretPlayerOrdnateur;
+	}
 	
 	
 	public String enterClavier () throws CodeInvalideException{
@@ -158,18 +176,22 @@ public class ModeMastermind extends Mode {
 				enterClavier = sc.nextLine();
 				
 				if (enterClavier.length() != outil.CONFIGURATION_NOMBRE) {
-					throw new CodeInvalideException("Votre saissi est incorrecte, entrez de nouveau votre nombre à " + outil.CONFIGURATION_NOMBRE + " chiffres");
+                    logger.error("Nombre trop long ! Configuration : " + outil.CONFIGURATION_NOMBRE + " chiffres");
+				    throw new CodeInvalideException("Votre saissi est incorrecte, entrez de nouveau votre nombre à " + outil.CONFIGURATION_NOMBRE + " chiffres");
+
 				}
-				
-				if (!outil.verificationNombreUtilisable(enterClavier) != true ) {
-					throw new CodeInvalideException("\nAttention le nombre contient des valeurs interdites suivantes.  " + outil.getNombreUtilisable() 
-					+ " \n \"Merci de saisir un nombre compris entre \" + outil.CONFIGURATION_NOMBRE_UTILISABLE[0] + \" et \" + outil.CONFIGURATION_NOMBRE_UTILISABLE[1] + \" !");
-				}
+
+                if (!outil.verificationNombreUtilisable(enterClavier) != true ) {
+                    logger.error("Valeurs interdites : " + outil.getNombreUtilisable() + " !");
+                    throw new CodeInvalideException("\nAttention le nombre contient des valeurs interdites suivantes.  " + outil.getNombreUtilisable()
+                            + " \nMerci de saisir un nombre dont les valeur sont comprises entre " + outil.CONFIGURATION_NOMBRE_UTILISABLE[0] + " et " + outil.CONFIGURATION_NOMBRE_UTILISABLE[1] + " !");
+                }
 				
 				for (int i = 0; i < enterClavier.length(); i++) {
 					
 					if (!Character.isDigit(enterClavier.charAt(i))) {
-						throw new CodeInvalideException("\nAttention votre saisie n'est pas un nombre ! \nMerci de renterez un nombre à " + outil.CONFIGURATION_NOMBRE + " chiffres");
+						logger.error("Caracter non valide : " + enterClavier);
+					    throw new CodeInvalideException("\nAttention votre saisie n'est pas un nombre ! \nMerci de renterez un nombre à " + outil.CONFIGURATION_NOMBRE + " chiffres");
 					}
 				}
 	
@@ -185,7 +207,7 @@ public class ModeMastermind extends Mode {
 		return enterClavier;
 	}
 	
-	/* Cette methode compare les deux nombres secret et renvois les bien plcés et les présents */
+	/* Cette methode compare les deux nombres secret et renvoie les bien placés et les présents */
 	
 	public ArrayList<Byte> resultatMastermind (ArrayList<Long> codeSecretOrdinateur, ArrayList<Long> codeSecretUtilisateur) {
 		
@@ -228,22 +250,7 @@ public class ModeMastermind extends Mode {
 				
 		return resultat;	
 	}
-	
-//	/* Les deux méthodes, ci-dessous vérifient les nombres générés par l'ordinateur ou l'utilisateur et renvoient un booléen pour indiquer 
-//	de ne pas prendre un nombre qui n'est pas admis dans la fourchette donné par la config */
-//	
-//	public boolean verificationNombreUtilisable (String nombre_a_verifier) {
-//		
-//		boolean resultat = false;
-//	
-//		for (int i = 0; i < nombreUtilisable.size() && resultat == false; i++) {
-//			
-//			resultat = nombre_a_verifier.contains(nombreUtilisable.get(i));		
-//		}
-//		
-//		return resultat;
-//	}
-	
+
 	/* Cette métode initialise la variable "initalisation_zero" du zéro selon la longueure de case demandé 
 	 * et initialise la variable "nombreMax" qui correspond au nombre le plus grand du selon la config selectionné*/
 	public void initalisationNombreMinMax() {
@@ -263,21 +270,7 @@ public class ModeMastermind extends Mode {
 
 	}
 
-	public ArrayList<Long> getCodeSecretPlayerUtilisateurTab() {
-		return codeSecretPlayerUtilisateur;
-	}
-
-	public void setCodeSecretPlayerUtilisateurTab(ArrayList<Long> codeSecretPlayerUtilisateurTab) {
-		this.codeSecretPlayerUtilisateur = codeSecretPlayerUtilisateurTab;
-	}
-
-	public ArrayList<Long> getCodeSecretPlayerOrdnateur() {
-		return codeSecretPlayerOrdnateur;
-	}
-
-	public void setCodeSecretPlayerOrdnateur(ArrayList<Long> codeSecretPlayerOrdnateur) {
-		this.codeSecretPlayerOrdnateur = codeSecretPlayerOrdnateur;
-	}
+	
 	
 
 }

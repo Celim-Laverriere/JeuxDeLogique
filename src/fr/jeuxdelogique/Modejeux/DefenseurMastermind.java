@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import fr.jeuxdelogique.outils.CodeInvalideException;
 import fr.jeuxdelogique.startjeux.Mastermind;
 
+
 public class DefenseurMastermind extends ModeMastermind {
 	
 	
@@ -25,19 +26,20 @@ public class DefenseurMastermind extends ModeMastermind {
 		
 	}
 
-	public DefenseurMastermind(String codeSecret, String reponseUtilisateur, int recupeNombreTab,
-			ArrayList<Long> codeSecretOrdinateur, ArrayList<Byte> resultat_BienPlace_Present,
-			ArrayList<Long> codeSecretUtilisateurTab, ArrayList<Long> codeSecretPlayerUtilisateurTab,
-			ArrayList<Long> codeSecretPlayerAITab, String nombreGenerer, String initCodeAvecZero,
-			String initalisation_zero, String nombreMax) {
-		super(codeSecret, reponseUtilisateur, recupeNombreTab, codeSecretOrdinateur, resultat_BienPlace_Present,
-				codeSecretUtilisateurTab, codeSecretPlayerUtilisateurTab, codeSecretPlayerAITab, nombreGenerer,
-				initCodeAvecZero, initalisation_zero, nombreMax);
-		// TODO Auto-generated constructor stub
-	}
+    public DefenseurMastermind(String codeSecret, ArrayList<Byte> resultatBienPlacePresentUtilisateur, ArrayList<Long> codeSecretOrdinateur,
+                               ArrayList<Byte> resultat_BienPlace_Present, ArrayList<Long> codeSecretUtilisateur, ArrayList<Long> codeSecretUtilisateurTab,
+                               ArrayList<Long> codeSecretPlayerUtilisateur, ArrayList<Long> codeSecretPlayerOrdnateur, String nombreGenerer, String initCodeAvecZero,
+                               String initalisation_zero, String nombreMax, Long nbre, ArrayList<String> tableauDesPossibilites, ArrayList<Long> tableauTempDeSolution,
+                               ArrayList<Byte> resultacompare) {
+        super(codeSecret, resultatBienPlacePresentUtilisateur, codeSecretOrdinateur, resultat_BienPlace_Present, codeSecretUtilisateur,
+                codeSecretUtilisateurTab, codeSecretPlayerUtilisateur, codeSecretPlayerOrdnateur, nombreGenerer, initCodeAvecZero, initalisation_zero, nombreMax);
+        this.nbre = nbre;
+        this.tableauDesPossibilites = tableauDesPossibilites;
+        this.tableauTempDeSolution = tableauTempDeSolution;
+        this.resultacompare = resultacompare;
+    }
 
-
-	public ArrayList<Byte> getResultacompare() {
+    public ArrayList<Byte> getResultacompare() {
 		return resultacompare;
 	}
 
@@ -65,33 +67,27 @@ public class DefenseurMastermind extends ModeMastermind {
 	@Override
 	public void playerGame() throws CodeInvalideException {
 
-		System.out.println("\t**********************************************");
+		System.out.println("\n\t**********************************************");
 		System.out.println("\t*                 MASTERMIND                 *");
 		System.out.println("\t*               MODE DEFENSEUR               *");
 		System.out.println("\t**********************************************");
-		
-		System.out.println(outil.CONFIGURATION_NOMBRE_UTILISABLE[1].toString());
-		
-		
-		
-		System.out.println("Entrez votre code secret de " + outil.CONFIGURATION_NOMBRE + " chiffres que l'ordinateur devra trouver :");
+
+		System.out.print("\nC'est à vous de jouer ! \nEntrez votre code secret de " + outil.CONFIGURATION_NOMBRE
+                + " chiffres que l'ordinateur devra trouver en " + outil.CONFIGURATION_ESSAIS + " essais : ");
 		setCodeSecretUtilisateur(outil.codeSecretAjoutTab(enterClavier()));
+        logger.trace("Code secret genere par l'utilisateur " + outil.chaineDeCaract(getCodeSecretUtilisateur()));
 		
 		setCodeSecretPlayerOrdnateur(outil.codeSecretAjoutTab(outil.genererCodeSecret( Mastermind.class.getSimpleName())));
-		
-		
-		if (getModeDev().equals("Dev")) {
-			System.out.println("\n Mode développeur ! \n Code secret : " + outil.chaineDeCaract(getCodeSecretUtilisateur()));
-		}
-		
+
 		setResultat_BienPlace_Present(resultatMastermind(getCodeSecretPlayerOrdnateur(), getCodeSecretUtilisateur()));
 		
 		setTableauTempDeSolution(outil.codeSecretAjoutTab(getInitalisation_zero()));
-		
+
+		System.out.print("\nEssai n° " + getCompteurEssai() + " ! ");
+
 		while(!getCodeSecretPlayerOrdnateur().equals(getCodeSecretUtilisateur()) && Long.parseLong(getNombreGenerer()) <= Long.parseLong(getNombreMax())) {
-			
+		
 			setResultacompare(resultatMastermind(getCodeSecretPlayerOrdnateur(), getTableauTempDeSolution()));
-			
 			
 			if (getResultat_BienPlace_Present().equals(getResultacompare())) {
 				tableauDesPossibilites.add(getInitCodeAvecZero());
@@ -99,9 +95,13 @@ public class DefenseurMastermind extends ModeMastermind {
 			
 			setTableauTempDeSolution(outil.codeSecretAjoutTab(genereNombreSolution()));
 		}
-		
+
+		System.out.println("\nProposition l'ordinateur: " + outil.chaineDeCaract(getCodeSecretPlayerOrdnateur()) + " Réponse : " + getResultat_BienPlace_Present().get(0) + " Bien placé et " +
+				getResultat_BienPlace_Present().get(1) + " Présent !");
+        logger.trace("Essai n° " + getCompteurEssai()+ " / " + getResultat_BienPlace_Present().get(0) + " Bien place et " +
+                getResultat_BienPlace_Present().get(1) + " Present !");
+
 		setNombreGenerer("");
-		
 		
 		while (!getCodeSecretPlayerOrdnateur().equals(getCodeSecretUtilisateur()) 
 				&& getTableauDesPossibilites().size() > 1 && getCompteurEssai() < outil.CONFIGURATION_ESSAIS) {
@@ -130,19 +130,44 @@ public class DefenseurMastermind extends ModeMastermind {
 			getTableauDesPossibilites().addAll(tableauTemp);
 			
 			setCompteurEssai(1);
-			
-			System.out.println("\n Longeure du tableau : " + tableauDesPossibilites.size() + " Présent : "+ tableauDesPossibilites.contains(outil.chaineDeCaract(getCodeSecretUtilisateur())) +"\n  Essai : " 
-			+ getCompteurEssai() + "\n resultat initiale : " + getResultat_BienPlace_Present() + "\n resultat à comparer : " + getResultacompare() );
+
+            System.out.print("\nEssai n° " + getCompteurEssai() + " ! ");
+
+			System.out.println("\nProposition de l'ordinateur : " + outil.chaineDeCaract(getCodeSecretPlayerOrdnateur()) + " Réponse : " + getResultat_BienPlace_Present().get(0) + " Bien placé et " +
+					getResultat_BienPlace_Present().get(1) + " Présent !");
+            logger.trace("Essai n° " + getCompteurEssai()+ " / " + getResultat_BienPlace_Present().get(0) + " Bien place et " +
+                    getResultat_BienPlace_Present().get(1) + " Present !");
+
 		}
 	
-		if (getCodeSecretUtilisateur().equals(getCodeSecretPlayerOrdnateur()) || getTableauDesPossibilites().get(0).equals(outil.chaineDeCaract(getCodeSecretUtilisateur())) ) {
-			
+		if (getCodeSecretUtilisateur().equals(getCodeSecretPlayerOrdnateur())) {
+
+            if (getModeDev().equals("developpeur")) {
+                System.out.println("\nMode développeur ! Code secret : " + outil.chaineDeCaract(getCodeSecretUtilisateur()));
+            }
+
 			System.out.println("\nBravo ! L'ordinateur a trouvé le code secret : " + outil.chaineDeCaract(getCodeSecretPlayerOrdnateur()));
-			
+
+            logger.trace("L'ordinateur à rouvé : " + outil.chaineDeCaract(getCodeSecretPlayerOrdnateur()));
+
+		} else if (getTableauDesPossibilites().get(0).equals(outil.chaineDeCaract(getCodeSecretUtilisateur()))) {
+
+            if (getModeDev().equals("developpeur")) {
+                System.out.println("\nMode développeur ! Code secret : " + outil.chaineDeCaract(getCodeSecretUtilisateur()));
+            }
+
+			System.out.println("\nBravo ! L'ordinateur a trouvé le code secret : " + getTableauDesPossibilites().get(0));
+
+            logger.trace("L'ordinateur à trouvé : " + getTableauDesPossibilites().get(0));
+
 		} else {
-			
-			System.out.println("\nBravo ! L'ordinateur n'a pas trouvé le code secret : " + tableauDesPossibilites.contains(outil.chaineDeCaract(getCodeSecretUtilisateur())) 
-			+ "  " + outil.chaineDeCaract(getCodeSecretUtilisateur()));
+
+            if (getModeDev().equals("developpeur")) {
+                System.out.println("\nMode développeur ! Code secret : " + outil.chaineDeCaract(getCodeSecretUtilisateur()));
+            }
+
+			System.out.println("\nL'ordinateur n'a pas réussi à trouver votre code secret : " + outil.chaineDeCaract(getCodeSecretUtilisateur()) + " ! ");
+            logger.trace("L'ordinateur à perdu : " + outil.chaineDeCaract(getCodeSecretPlayerOrdnateur()));
 		}
 	}
 

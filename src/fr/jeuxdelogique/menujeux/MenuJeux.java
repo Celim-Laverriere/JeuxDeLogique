@@ -2,7 +2,6 @@ package fr.jeuxdelogique.menujeux;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import fr.jeuxdelogique.outils.CodeInvalideException;
 
 public class MenuJeux implements Menu{
@@ -31,8 +30,9 @@ public class MenuJeux implements Menu{
 
 		do {	
 
-			try { 
+			try {
 
+				System.out.print("\n\t - Entrez votre choix et taper Entrée pour valider : ");
 				reponseChoix = sc.nextLine();
 
 					if (!reponseChoix.equals("1") && !reponseChoix.equals("2")) {
@@ -48,10 +48,12 @@ public class MenuJeux implements Menu{
 
 			case "1":
 				choixJeux = "RecherchePlusMoins";
+				logger.info(choixJeux);
 				break;
 
 			case "2":
 				choixJeux = "Mastermind";
+                logger.info(choixJeux);
 				break;
 			}
 

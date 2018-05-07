@@ -2,10 +2,12 @@ package fr.jeuxdelogique.Modejeux;
 
 import java.util.ArrayList;
 
+import fr.jeuxdelogique.outils.CodeInvalideException;
+
 
 public class ModeRecherche extends Mode {
 
-	private String codeSecret;
+	private String codeSecret = "";
 	private ArrayList<Long> codeSecretMachineTab = new ArrayList<Long>();
 	private ArrayList<Long> codeSecretUtilisateurTab = new ArrayList<Long>();
 	private ArrayList<Long> codeSecretPlayerUtilisateurTab = new ArrayList<Long>();
@@ -13,14 +15,14 @@ public class ModeRecherche extends Mode {
 	private String reponseUtilisateur = "";
 	private String resultat = "";
 	private long recupeNombreTab;
-	
+
 	public ModeRecherche () {
-		
+
 	}
-	
+
 	public ModeRecherche(String codeSecret, ArrayList<Long> codeSecretMachineTab,ArrayList<Long> codeSecretUtilisateurTab, ArrayList<Long> codeSecretPlayerUtilisateurTab,
 						 ArrayList<Long> codeSecretPlayerAITab, String reponseUtilisateur, String resultat, int recupeNombreTab) {
-		
+
 		super();
 		this.codeSecret = codeSecret;
 		this.codeSecretMachineTab = codeSecretMachineTab;
@@ -32,7 +34,7 @@ public class ModeRecherche extends Mode {
 		this.recupeNombreTab = recupeNombreTab;
 	}
 
-/********************************** "String" code secret Machine ********************************************/
+	/********************************** "String" code secret Machine ********************************************/
 	public String getCodeSecret() {
 		return codeSecret;
 	}
@@ -43,18 +45,17 @@ public class ModeRecherche extends Mode {
 		this.codeSecret = codeSecret;
 	}
 
-/********************************** "Tableau" code secret Machine ********************************************/
+	/********************************** "Tableau" code secret Machine ********************************************/
 	public ArrayList<Long> getCodeSecretMachineTab() {
 		return codeSecretMachineTab;
 	}
 
 	public void setCodeSecretMachineTab(ArrayList<Long> codeSecretMachineTab) {
-		codeSecretMachineTab = tableau(getCodeSecretMachineTab(), codeSecret);
 		this.codeSecretMachineTab = codeSecretMachineTab;
-		
+
 	}
-	
-/********************************** "String" Réponse Utilisateur *****************************************/
+
+	/********************************** "String" Réponse Utilisateur *****************************************/
 	public String getReponseUtilisateur() {
 		return reponseUtilisateur;
 	}
@@ -62,8 +63,8 @@ public class ModeRecherche extends Mode {
 	public void setReponseUtilisateur(String reponseUtilisateur) {
 		this.reponseUtilisateur = reponseUtilisateur;
 	}
-	
-/********************************** "Tableau" code secret Utilisateur *****************************************/
+
+	/********************************** "Tableau" code secret Utilisateur *****************************************/
 	public ArrayList<Long> getCodeSecretUtilisateurTab() {
 		return codeSecretUtilisateurTab;
 	}
@@ -73,7 +74,7 @@ public class ModeRecherche extends Mode {
 		this.codeSecretUtilisateurTab = codeSecretUtilisateurTab;
 	}
 
-/********************************** *****************************************/
+	/********************************** *****************************************/
 	public ArrayList<Long> getCodeSecretPlayerUtilisateurTab() {
 		return codeSecretPlayerUtilisateurTab;
 	}
@@ -82,33 +83,29 @@ public class ModeRecherche extends Mode {
 		codeSecretPlayerUtilisateurTab = tableau(getCodeSecretPlayerUtilisateurTab(), reponseUtilisateur);
 		this.codeSecretPlayerUtilisateurTab = codeSecretPlayerUtilisateurTab;
 	}
-	
-/**********************************  *****************************************/
+
+	/**********************************  *****************************************/
 	public ArrayList<Long> getCodeSecretPlayerAITab() {
 		return codeSecretPlayerAITab;
 	}
 
 	public void setCodeSecretPlayerAITab(ArrayList<Long> codeSecretPlayerAITab) {
-		codeSecretPlayerAITab = tableau(getCodeSecretPlayerAITab(), codeSecret);
 		this.codeSecretPlayerAITab = codeSecretPlayerAITab;
 	}
-	
-/********************************** La méthode récupere le nombre du tableau pour le modifier *****************************************/
+
+	/********************************** La méthode récupere le nombre du tableau pour le modifier *****************************************/
 	public long getRecupeNombreTab() {
 		return recupeNombreTab;
 	}
 
 	public void setRecupeNombreTab(Long recupeNombreTab, int nbre) {
-	
-		if (codeSecret.length() == outil.CONFIGURATION_NOMBRE) {
-			codeSecret = "";
-		}
-		
+
 		codeSecret += "" + (recupeNombreTab + (nbre));
+
 		this.recupeNombreTab = recupeNombreTab;
 	}
 
-/********************************** get et set résiltat *****************************************/
+	/********************************** get et set résiltat *****************************************/
 	public String getResultat() {
 		return resultat;
 	}
@@ -116,54 +113,63 @@ public class ModeRecherche extends Mode {
 	public void setResultat(String resultat) {
 		this.resultat = resultat;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param tab
 	 * @param code
 	 * @return
 	 */
-		public ArrayList<Long> tableau (ArrayList<Long> tab, String code) {
-			tab = outil.codeSecretAjoutTab(code);
-			return tab;
-		}
-	
+	public ArrayList<Long> tableau (ArrayList<Long> tab, String code) {
+		tab = outil.codeSecretAjoutTab(code);
+		return tab;
+	}
+
 	/**
-	 * 
+	 *
 	 * @param
 	 */
-		public void reponse () {
-			
-			int temp = 0;
-			 
-			do {
-				
-				try {
-					
-					Long.parseLong(reponseUtilisateur = (sc.nextLine()));
-					
-					if (reponseUtilisateur.length() != outil.CONFIGURATION_NOMBRE) {
-						System.out.println("Votre saissi est incorrecte, entrez de nouveau votre nombre à " + outil.CONFIGURATION_NOMBRE + " chiffres");
-						
-					}
-					
-				} catch (NumberFormatException e) {
-					System.out.println("Attention votre saisie n'est pas une  nombre : ");
-					System.out.println("Merci de renterez un nombre à " + outil.CONFIGURATION_NOMBRE + " chiffres");
-					temp = 1;
+	public void reponse () throws CodeInvalideException {
+
+		int temp;
+
+		do {
+
+			temp = 0;
+
+			try {
+
+				reponseUtilisateur = sc.nextLine();
+
+				if (reponseUtilisateur.length() != outil.CONFIGURATION_NOMBRE) {
+					throw new CodeInvalideException("Votre saissi est incorrecte, entrez de nouveau votre nombre à " + outil.CONFIGURATION_NOMBRE + " chiffres");
+
 				}
-				
-			} while (reponseUtilisateur.length() != outil.CONFIGURATION_NOMBRE || temp == 1);
-			
-		}
-		
+
+				for (int i = 0; i < reponseUtilisateur.length(); i++) {
+
+					if (!Character.isDigit(reponseUtilisateur.charAt(i))) {
+						throw new CodeInvalideException("\nAttention votre saisie n'est pas un nombre ! \nMerci de renterez un nombre à " + outil.CONFIGURATION_NOMBRE + " chiffres");
+					}
+				}
+
+			} catch (CodeInvalideException e) {
+				System.out.println(e.getLocalizedMessage());
+				temp = 1;
+			}
+
+		} while (temp == 1);
+
+	}
+
 	/**
-	 * 
+	 * @throws CodeInvalideException
+	 *
 	 */
-		@Override
-		public void playerGame() {
-			// TODO Auto-generated method stub
-			
-		}
+	@Override
+	public void playerGame() throws CodeInvalideException {
+		// TODO Auto-generated method stub
+
+	}
 
 }

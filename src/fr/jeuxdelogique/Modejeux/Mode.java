@@ -4,14 +4,16 @@ import java.util.Scanner;
 
 import fr.jeuxdelogique.outils.CodeInvalideException;
 import fr.jeuxdelogique.outils.Outils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public abstract class Mode {
 
-	
+	static final Logger logger = LogManager.getLogger();
 	Outils outil = new Outils();
 	Scanner sc = new Scanner (System.in);
 	
-	private int compteurEssai;
+	private int compteurEssai = 1;
 	private static String modeDev;
 	
 	public Mode() {
@@ -26,18 +28,18 @@ public abstract class Mode {
 	public void setCompteurEssai(int compteurEssai) {
 		this.compteurEssai += compteurEssai;
 	}
-	
+
 	public static String getModeDev() {
 		return modeDev;
 	}
 
 	public static void setModeDev(String modeDev) {
-		Mode.modeDev = modeDev;
+		setModeDev(modeDev);
 	}
 
-	/*********************** Métode pour le mode développeur ******************************/
+	/********************** Métode pour le mode développeur ****************************/
 	public static void modeDev(String modeDeveloppeur) {
-		setModeDev(modeDeveloppeur);
+		modeDev = modeDeveloppeur;
 	}
 
 	/*********************** Métode ou est inseret le code du jeu 

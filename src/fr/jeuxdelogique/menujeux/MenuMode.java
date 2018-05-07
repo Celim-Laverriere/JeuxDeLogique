@@ -1,12 +1,15 @@
 package fr.jeuxdelogique.menujeux;
 
-import java.util.Scanner;
 import fr.jeuxdelogique.outils.CodeInvalideException;
+
+import java.util.Scanner;
 
 public class MenuMode implements Menu {
 
-Scanner sc = new Scanner(System.in);
-	
+
+    Scanner sc = new Scanner(System.in);
+
+
 	private String choixMode = "";
 	
 	
@@ -32,12 +35,13 @@ Scanner sc = new Scanner(System.in);
 		do {
 
 
-			try { 
+			try {
 
+				System.out.print("\n\t - Entrez votre choix et tapez entrée pour valider : ");
 				reponseChoix = sc.nextLine();
 
 				if (!reponseChoix.equals("1") && !reponseChoix.equals("2") && !reponseChoix.equals("3")) {
-					throw new CodeInvalideException("\nAttention votre saisie est incorecte : ! \n\t - Pour le mode Challenger tapez : 1 "
+					throw new CodeInvalideException("\nAttention votre saisie est incorrecte : ! \n\t - Pour le mode Challenger tapez : 1 "
 							+ "\n\t - Pour le mode Défenseur tapez : 2 \n\t - Pour le mode duel tapez : 3");
 				}
 

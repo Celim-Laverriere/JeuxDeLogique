@@ -2,6 +2,9 @@ package fr.jeuxdelogique.Modejeux;
 
 import java.util.ArrayList;
 
+import fr.jeuxdelogique.outils.CodeInvalideException;
+import fr.jeuxdelogique.startjeux.RecherchePlusMoins;
+
 
 public class DuelRecherchePlusMoins extends ModeRecherche {
 
@@ -18,10 +21,11 @@ public class DuelRecherchePlusMoins extends ModeRecherche {
 		// TODO Auto-generated constructor stub
 	}
 
-/********************************************** Ci-dessous la méthode qui lance le jeu **********************************************************/
+/********************************************** Ci-dessous la méthode qui lance le jeu 
+ * @throws CodeInvalideException **********************************************************/
 
 	@Override
-	public void playerGame() {
+	public void playerGame() throws CodeInvalideException {
 		
 		System.out.println("\t**********************************************");
 		System.out.println("\t*                RECHERCHE +/-               *");
@@ -31,8 +35,7 @@ public class DuelRecherchePlusMoins extends ModeRecherche {
 		int compteur = 0;
 			
 		/*********** Code générer par l'ordinateur ***********/
-		setCodeSecret(getCodeSecret());
-		setCodeSecretMachineTab(getCodeSecretMachineTab());	
+		setCodeSecretMachineTab(outil.codeSecretAjoutTab(outil.genererCodeSecret(RecherchePlusMoins.class.getSimpleName())));
 		
 		if (getModeDev().equals("Dev")) {
 			System.out.println("\n Mode développeur ! \n Code secret : " + getCodeSecret());
@@ -43,8 +46,8 @@ public class DuelRecherchePlusMoins extends ModeRecherche {
 		
 		reponse();
 		setCodeSecretUtilisateurTab(getCodeSecretUtilisateurTab());
-		setCodeSecret(getCodeSecret());
-		setCodeSecretPlayerAITab(getCodeSecretPlayerAITab());
+
+		setCodeSecretPlayerAITab(outil.codeSecretAjoutTab(outil.genererCodeSecret(RecherchePlusMoins.class.getSimpleName())));
 	
 		do {
 		
