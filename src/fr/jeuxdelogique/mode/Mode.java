@@ -1,8 +1,8 @@
-package fr.jeuxdelogique.Modejeux;
+package fr.jeuxdelogique.mode;
 
 import java.util.Scanner;
 
-import fr.jeuxdelogique.outils.CodeInvalideException;
+import fr.jeuxdelogique.invalideException.CodeInvalideException;
 import fr.jeuxdelogique.outils.Outils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -1,4 +1,4 @@
-package fr.jeuxdelogique.outils;
+package fr.jeuxdelogique.invalideException;
 
 
 public class CodeInvalideException extends Exception {

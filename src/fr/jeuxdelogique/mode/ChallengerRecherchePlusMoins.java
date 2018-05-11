@@ -1,9 +1,9 @@
-package fr.jeuxdelogique.Modejeux;
+package fr.jeuxdelogique.mode;
 
 import java.util.ArrayList;
 
-import fr.jeuxdelogique.outils.CodeInvalideException;
-import fr.jeuxdelogique.startjeux.RecherchePlusMoins;
+import fr.jeuxdelogique.invalideException.CodeInvalideException;
+import fr.jeuxdelogique.jeux.RecherchePlusMoins;
 
 
 public class ChallengerRecherchePlusMoins extends ModeRecherche {
@@ -32,22 +32,25 @@ public class ChallengerRecherchePlusMoins extends ModeRecherche {
 		System.out.println("\t*               MODE CHALLENGER              *");
 		System.out.println("\t**********************************************");
 
+		System.out.print("\n Dans ce mode vous devez trouver la combinaison secrète générée par l'ordinateur !" + " Vous avez " + outil.CONFIGURATION_ESSAIS + " essais !" +
+				"\n Vous devez saisir une combinaison de " + outil.CONFIGURATION_NOMBRE + " chiffres !"
+				+ "\n C'est à vous de jouer !\n" );
+
 		setCodeSecretMachineTab(outil.codeSecretAjoutTab(outil.genererCodeSecret(RecherchePlusMoins.class.getSimpleName())));
-		logger.trace("Code secret généré par l'ordinateur " + outil.chaineDeCaract(getCodeSecretMachineTab()));
+		logger.trace("Combinaison secrète générée par l'ordinateur " + outil.chaineDeCaract(getCodeSecretMachineTab()));
 
-		if (getModeDev().equals("developpeur")) {
-			System.out.println("\n Mode développeur ! Code secret : " + outil.chaineDeCaract(getCodeSecretMachineTab()));
+		if (getModeDev().equals("-dev")) {
+			System.out.println("\n Mode développeur ! Combinaison secrète : " + outil.chaineDeCaract(getCodeSecretMachineTab()));
 		}
-
-		System.out.println("\nC'est à vous de jouer ! Vous avez " + outil.CONFIGURATION_ESSAIS + " essais pour trouver le code secret !" );
 
 		do {
 
-			System.out.print("\nEssai n° " + getCompteurEssai() + " ! " + "\nEnter votre nombre à " + outil.CONFIGURATION_NOMBRE + " chiffres : ");
+			System.out.print("\n Essai n° " + getCompteurEssai() + " ! ");
+			System.out.print("\n Saisissez votre combinaison et tapez sur entrée pour valider : ");
 
 			reponse();
 			setCodeSecretUtilisateurTab(getCodeSecretUtilisateurTab());
-			logger.trace("Essai n° " + getCompteurEssai() + " Code secret utilisateur : " + outil.chaineDeCaract(getCodeSecretUtilisateurTab()));
+			logger.trace("Essai n° " + getCompteurEssai() + " Combinaison utilisateur : " + outil.chaineDeCaract(getCodeSecretUtilisateurTab()));
 
 			int i = 0;
 
@@ -65,7 +68,7 @@ public class ChallengerRecherchePlusMoins extends ModeRecherche {
 				}
 			}
 
-			System.out.println("Proposition : "+ getReponseUtilisateur() + " Réponse : " + getResultat());
+			System.out.println(" Proposition : "+ getReponseUtilisateur() + " Réponse : " + getResultat());
 
 			logger.trace("Réponse : " + getResultat());
 
@@ -76,11 +79,11 @@ public class ChallengerRecherchePlusMoins extends ModeRecherche {
 		} while (!getCodeSecretUtilisateurTab().equals(getCodeSecretMachineTab()) && getCompteurEssai() <= outil.CONFIGURATION_ESSAIS);
 
 		if (getCodeSecretUtilisateurTab().equals(getCodeSecretMachineTab())){
-			System.out.println("\nBravo ! Vous avez trouvé la bonne combinaison secrete : " + getReponseUtilisateur());
+			System.out.println("\n Bravo ! Vous avez trouvé la combinaison secrète de l'ordinateur : " + getReponseUtilisateur());
 			logger.trace("L'utilisateur à trouvé : " + getReponseUtilisateur());
 		} else {
-			System.out.println("\nPerdu ! La combinaison secrete été : " + outil.chaineDeCaract(getCodeSecretMachineTab()));
-			logger.trace("Perdu ! La combinaison été é : " + outil.chaineDeCaract(getCodeSecretMachineTab()));
+			System.out.println("\nPerdu ! La combinaison secrète de l'ordinateur été : " + outil.chaineDeCaract(getCodeSecretMachineTab()));
+			logger.trace("Perdu ! La combinaison secrète été : " + outil.chaineDeCaract(getCodeSecretMachineTab()));
 		}
 
 	}

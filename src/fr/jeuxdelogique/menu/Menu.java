@@ -1,6 +1,6 @@
-package fr.jeuxdelogique.menujeux;
+package fr.jeuxdelogique.menu;
 
-import fr.jeuxdelogique.outils.CodeInvalideException;
+import fr.jeuxdelogique.invalideException.CodeInvalideException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

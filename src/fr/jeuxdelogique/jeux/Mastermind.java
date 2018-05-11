@@ -1,11 +1,10 @@
-package fr.jeuxdelogique.startjeux;
+package fr.jeuxdelogique.jeux;
 
-import fr.jeuxdelogique.Modejeux.*;
-import fr.jeuxdelogique.outils.CodeInvalideException;
+import fr.jeuxdelogique.mode.*;
+import fr.jeuxdelogique.invalideException.CodeInvalideException;
 
 
 public class Mastermind extends Jeux{
-
 
 	public Mastermind () {
 

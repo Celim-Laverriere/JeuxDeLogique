@@ -1,8 +1,8 @@
-package fr.jeuxdelogique.Modejeux;
+package fr.jeuxdelogique.mode;
 
 import java.util.ArrayList;
 
-import fr.jeuxdelogique.outils.CodeInvalideException;
+import fr.jeuxdelogique.invalideException.CodeInvalideException;
 
 
 public class ModeRecherche extends Mode {
@@ -14,6 +14,7 @@ public class ModeRecherche extends Mode {
 	private ArrayList<Long> codeSecretPlayerAITab = new ArrayList<Long>();
 	private String reponseUtilisateur = "";
 	private String resultat = "";
+	private String resultatOrdinateur = "";
 	private long recupeNombreTab;
 
 	public ModeRecherche () {
@@ -52,7 +53,6 @@ public class ModeRecherche extends Mode {
 
 	public void setCodeSecretMachineTab(ArrayList<Long> codeSecretMachineTab) {
 		this.codeSecretMachineTab = codeSecretMachineTab;
-
 	}
 
 	/********************************** "String" Réponse Utilisateur *****************************************/
@@ -114,21 +114,20 @@ public class ModeRecherche extends Mode {
 		this.resultat = resultat;
 	}
 
-	/**
-	 *
-	 * @param tab
-	 * @param code
-	 * @return
-	 */
+	/********************************** get et set résiltat ordinateur *****************************************/
+	public String getResultatOrdinateur() {
+		return resultatOrdinateur;
+	}
+
+	public void setResultatOrdinateur(String resultatOrdinateur) {
+		this.resultatOrdinateur = resultatOrdinateur;
+	}
+
 	public ArrayList<Long> tableau (ArrayList<Long> tab, String code) {
 		tab = outil.codeSecretAjoutTab(code);
 		return tab;
 	}
 
-	/**
-	 *
-	 * @param
-	 */
 	public void reponse () throws CodeInvalideException {
 
 		int temp;
@@ -141,20 +140,27 @@ public class ModeRecherche extends Mode {
 
 				reponseUtilisateur = sc.nextLine();
 
-				if (reponseUtilisateur.length() != outil.CONFIGURATION_NOMBRE) {
-					throw new CodeInvalideException("Votre saissi est incorrecte, entrez de nouveau votre nombre à " + outil.CONFIGURATION_NOMBRE + " chiffres");
-
-				}
-
 				for (int i = 0; i < reponseUtilisateur.length(); i++) {
 
 					if (!Character.isDigit(reponseUtilisateur.charAt(i))) {
-						throw new CodeInvalideException("\nAttention votre saisie n'est pas un nombre ! \nMerci de renterez un nombre à " + outil.CONFIGURATION_NOMBRE + " chiffres");
+						logger.error("Caractére non valide : " + reponseUtilisateur);
+						throw new CodeInvalideException("\n Attention votre saisie n'est pas un nombre ! ");
 					}
+				}
+
+				if (reponseUtilisateur.length() > outil.CONFIGURATION_NOMBRE) {
+					logger.error("Nombre trop long ! Configuration : " + outil.CONFIGURATION_NOMBRE + " chiffres");
+					throw new CodeInvalideException("\n Attention votre saisie contient trop de chiffre ! Vous devez saisir une combinaison de " + outil.CONFIGURATION_NOMBRE + " chiffres !");
+				}
+
+				if (reponseUtilisateur.length() < outil.CONFIGURATION_NOMBRE) {
+					logger.error("Nombre trop court ! Configuration : " + outil.CONFIGURATION_NOMBRE + " chiffres");
+					throw new CodeInvalideException("\n Attention votre saisie ne contient pas assez de chiffre ! Vous devez saisir une combinaison de " + outil.CONFIGURATION_NOMBRE + " chiffres !");
 				}
 
 			} catch (CodeInvalideException e) {
 				System.out.println(e.getLocalizedMessage());
+				System.out.print(" Saisissez votre combinaison et tapez sur entrée pour valider : ");
 				temp = 1;
 			}
 
@@ -162,14 +168,8 @@ public class ModeRecherche extends Mode {
 
 	}
 
-	/**
-	 * @throws CodeInvalideException
-	 *
-	 */
 	@Override
 	public void playerGame() throws CodeInvalideException {
 		// TODO Auto-generated method stub
-
 	}
-
 }

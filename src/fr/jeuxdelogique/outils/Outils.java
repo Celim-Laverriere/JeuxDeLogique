@@ -1,5 +1,7 @@
 package fr.jeuxdelogique.outils;
 
+import fr.jeuxdelogique.invalideException.CodeInvalideException;
+
 import java.util.ArrayList;
 
 
@@ -75,7 +77,7 @@ public class Outils {
 	}
 
 	/********************* Ci-dessous la methode génére un tableau des nombre "NON" utilisables pour le mastermind ***************/	
-	public ArrayList<String> init_tableau_nombre_utilisable () {
+	public ArrayList<String> initTableauNombreUtilisable() {
 
 		//ArrayList<String> nombreUtilisable = new ArrayList<String>();
 
@@ -84,7 +86,7 @@ public class Outils {
 
 		for (int i = 0 ; i < 10; i++) {
 
-			if (i > nbreMin && nbreMax < i && i < 10 ) {
+			if (i > nbreMin && nbreMax < i || i < nbreMin && nbreMax > i && i < 10 ) {
 
 				nombreUtilisable.add("" + i);
 			}		
