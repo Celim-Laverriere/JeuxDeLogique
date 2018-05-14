@@ -7,35 +7,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89617f01-393c-48d0-9208-3638ad7a75a1" name="Default" comment="Sauvegarde des modifications et du travail&#10;&#10;- Insertion des logs finis ! &#10;- Readme fini !">
-      <change afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/menu/MenuJeux.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DefenseurMastermind.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DuelRecherchePlusMoins.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JeuxDeLogique.jar" beforeDir="false" afterPath="$PROJECT_DIR$/JeuxDeLogique.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/Modejeux/ChallengerMastermind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ChallengerMastermind.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/Modejeux/ChallengerRecherchePlusMoins.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ChallengerRecherchePlusMoins.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/Modejeux/DefenseurMastermind.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/Modejeux/DefenseurRecherchePlusMoins.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DefenseurRecherchePlusMoins.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/Modejeux/DuelMastermind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DuelMastermind.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/Modejeux/DuelRecherchePlusMoins.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/Modejeux/Mode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/Mode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/Modejeux/ModeMastermind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ModeMastermind.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/Modejeux/ModeRecherche.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ModeRecherche.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/menujeux/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/menu/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/menujeux/MenuJeux.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/menujeux/MenuMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/menu/MenuMode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/outils/CodeInvalideException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/invalideException/CodeInvalideException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ressources/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/MainJeux.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/MainJeux.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/menu/MenuMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/menu/MenuMode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DefenseurMastermind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DefenseurMastermind.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DefenseurRecherchePlusMoins.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DefenseurRecherchePlusMoins.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DuelMastermind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DuelMastermind.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ModeMastermind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ModeMastermind.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/outils/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/outils/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/outils/Outils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/outils/Outils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/startjeux/Jeux.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/Jeux.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/startjeux/MainJeux.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/MainJeux.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/startjeux/Mastermind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/Mastermind.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/jeuxdelogique/startjeux/RecherchePlusMoins.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/RecherchePlusMoins.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,7 +29,62 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="DefenseurMastermind.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DefenseurMastermind.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="136" column="120" selection-start-line="136" selection-start-column="120" selection-end-line="136" selection-end-column="120" />
+              <folding>
+                <element signature="method#setTableauTempDeSolution#0;class#DefenseurMastermind#0" />
+                <element signature="method#setTableauDesPossibilites#0;class#DefenseurMastermind#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainJeux.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/MainJeux.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="457">
+              <caret line="95" column="13" selection-start-line="95" selection-start-column="13" selection-end-line="95" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChallengerRecherchePlusMoins.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ChallengerRecherchePlusMoins.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="80" column="44" selection-start-line="80" selection-start-column="44" selection-end-line="80" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="all.log" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/all.log">
+          <provider selected="true" editor-type-id="LogFileEditorProvider">
+            <state>
+              <caret lean-forward="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MenuJeux.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/menu/MenuJeux.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#275#276#0" expanded="true" />
+                <element signature="e#307#308#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -78,22 +116,24 @@
         <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/Modejeux/ChallengerRecherchePlusMoins.java" />
         <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/Mode.java" />
         <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ChallengerRecherchePlusMoins.java" />
-        <option value="$PROJECT_DIR$/config.properties" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DefenseurRecherchePlusMoins.java" />
         <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DuelRecherchePlusMoins.java" />
         <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/Jeux.java" />
-        <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/MainJeux.java" />
         <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/Mastermind.java" />
         <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/RecherchePlusMoins.java" />
         <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/menu/MenuJeux.java" />
-        <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/menu/MenuMode.java" />
         <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ModeRecherche.java" />
-        <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ModeMastermind.java" />
-        <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DefenseurMastermind.java" />
-        <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DuelMastermind.java" />
         <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ChallengerMastermind.java" />
         <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/outils/Outils.java" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ModeMastermind.java" />
+        <option value="$PROJECT_DIR$/config.properties" />
+        <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/MainJeux.java" />
+        <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/outils/Config.java" />
+        <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DuelMastermind.java" />
+        <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DefenseurRecherchePlusMoins.java" />
+        <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/menu/MenuMode.java" />
+        <option value="$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DefenseurMastermind.java" />
+        <option value="$PROJECT_DIR$/ressources/config.properties" />
       </list>
     </option>
   </component>
@@ -107,8 +147,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="309" />
-    <option name="y" value="-10" />
+    <option name="x" value="762" />
+    <option name="y" value="-19" />
     <option name="width" value="916" />
     <option name="height" value="1000" />
   </component>
@@ -122,7 +162,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -180,8 +221,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -194,6 +234,11 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\WORKSPACES\PROJETS_OC\JeuxDeLogique\ressources" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -293,12 +338,23 @@
       <workItem from="1525935085618" duration="4943000" />
       <workItem from="1525941105624" duration="21145000" />
       <workItem from="1526024214552" duration="18193000" />
-      <workItem from="1526051709980" duration="2851000" />
+      <workItem from="1526051709980" duration="3086000" />
+      <workItem from="1526113211558" duration="16850000" />
+      <workItem from="1526135372182" duration="1393000" />
+      <workItem from="1526273746301" duration="6795000" />
     </task>
+    <task id="LOCAL-00001" summary="Sauvegarde des modifications et du travail&#10;&#10;- Insertion des logs finis ! &#10;- Readme fini !">
+      <created>1526054610277</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1526054610277</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116446000" />
+    <option name="totallyTimeSpent" value="141719000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -310,11 +366,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32985386" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32837406" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3282365" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info id="Image Layers" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
@@ -322,25 +378,25 @@
       <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32985386" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.40063763" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.4006116" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.5674814" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49946865" visible="true" weight="0.16666667" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49946865" visible="true" weight="0.16666667" />
       <window_info anchor="right" id="Database" order="6" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32943678" />
       <window_info id="Structure" order="1" sideWeight="0.5005314" side_tool="true" weight="0.18020834" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.38044634" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.38022426" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info id="Learn" order="2" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32943678" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,24 +441,14 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="132" />
+      <option name="time" value="141" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/MainJeux.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ModeRecherche.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="48" lean-forward="true" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ModeMastermind.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="72" selection-start-line="72" selection-end-line="72" />
+        <state relative-caret-position="884">
+          <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -561,13 +607,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ressources/log4j2.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="16" lean-forward="true" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/java.base/jdk/internal/util/Preconditions.java" />
     <entry file="jar://$PROJECT_DIR$/lib/log4j-api-2.11.0.jar!/org/apache/logging/log4j/spi/AbstractLogger.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -604,84 +643,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="5" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ChallengerRecherchePlusMoins.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="64" column="24" lean-forward="true" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DefenseurRecherchePlusMoins.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="31" column="79" lean-forward="true" selection-start-line="31" selection-start-column="79" selection-end-line="31" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DuelRecherchePlusMoins.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="132" column="34" lean-forward="true" selection-start-line="132" selection-start-column="34" selection-end-line="132" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/all.log">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="695">
-          <caret line="900" column="76" lean-forward="true" selection-start-line="900" selection-start-column="18" selection-end-line="900" selection-end-column="76" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="LogFileEditorProvider">
-        <state relative-caret-position="185">
-          <caret line="2310" column="42" selection-start-line="2310" selection-start-column="42" selection-end-line="2310" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="136">
-            <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/Jeux.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/MainJeux.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="21" column="13" lean-forward="true" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/Mastermind.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" lean-forward="true" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/RecherchePlusMoins.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="29" column="5" selection-end-line="31" />
         </state>
       </provider>
     </entry>
@@ -692,54 +657,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/menu/MenuMode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="47" lean-forward="true" selection-end-line="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ModeRecherche.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="129" lean-forward="true" selection-start-line="129" selection-end-line="129" />
-          <folding>
-            <element signature="e#4291#4292#0" expanded="true" />
-            <element signature="e#4323#4324#0" expanded="true" />
-            <element signature="e#4388#4389#0" expanded="true" />
-            <element signature="e#4439#4440#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ModeMastermind.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="271" column="5" selection-start-line="271" selection-start-column="5" selection-end-line="271" selection-end-column="5" />
-          <folding>
-            <element signature="e#4525#4526#0" expanded="true" />
-            <element signature="e#4576#4577#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DefenseurMastermind.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="88" column="78" selection-start-line="88" selection-start-column="78" selection-end-line="88" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DuelMastermind.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="143" lean-forward="true" selection-start-line="143" selection-end-line="143" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ChallengerMastermind.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
@@ -747,23 +664,160 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="85">
+            <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/RecherchePlusMoins.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/Jeux.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/outils/Outils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1292">
-          <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
+        <state relative-caret-position="180">
+          <caret line="73" selection-start-line="73" selection-end-line="73" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1873#1879#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ModeMastermind.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1531">
+          <caret line="137" selection-start-line="137" selection-end-line="137" />
+          <folding>
+            <element signature="e#4422#4423#0" expanded="true" />
+            <element signature="e#4453#4454#0" expanded="true" />
+            <element signature="e#4738#4739#0" expanded="true" />
+            <element signature="e#4765#4766#0" expanded="true" />
+            <element signature="e#4820#4821#0" expanded="true" />
+            <element signature="e#4901#4902#0" expanded="true" />
+            <element signature="e#4931#4932#0" expanded="true" />
+            <element signature="e#4992#4993#0" expanded="true" />
+            <element signature="e#5039#5040#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/outils/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ressources/log4j2.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="16" lean-forward="true" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ModeRecherche.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DuelMastermind.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1547">
+          <caret line="91" column="13" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DefenseurRecherchePlusMoins.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="91" column="140" selection-start-line="91" selection-start-column="140" selection-end-line="91" selection-end-column="140" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/menu/MenuMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+          <folding>
+            <element signature="e#268#269#0" expanded="true" />
+            <element signature="e#291#292#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/Mastermind.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ressources/config.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/menu/MenuJeux.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="26" column="68" lean-forward="true" selection-start-line="26" selection-start-column="68" selection-end-line="26" selection-end-column="68" />
+        <state relative-caret-position="85">
+          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#275#276#0" expanded="true" />
+            <element signature="e#307#308#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DefenseurMastermind.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="136" column="120" selection-start-line="136" selection-start-column="120" selection-end-line="136" selection-end-column="120" />
+          <folding>
+            <element signature="method#setTableauTempDeSolution#0;class#DefenseurMastermind#0" />
+            <element signature="method#setTableauDesPossibilites#0;class#DefenseurMastermind#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/MainJeux.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="95" column="13" selection-start-line="95" selection-start-column="13" selection-end-line="95" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ChallengerRecherchePlusMoins.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="80" column="44" selection-start-line="80" selection-start-column="44" selection-end-line="80" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/all.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider">
+        <state>
+          <caret lean-forward="true" />
         </state>
       </provider>
     </entry>
@@ -786,7 +840,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited />
           <splitter-proportions>
             <option name="proportions">
               <list>

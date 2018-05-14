@@ -43,10 +43,6 @@ public class DefenseurRecherchePlusMoins extends ModeRecherche {
 
 		setCodeSecretMachineTab(outil.codeSecretAjoutTab(outil.genererCodeSecret(RecherchePlusMoins.class.getSimpleName())));
 
-		if (getModeDev().equals("-dev")) {
-			System.out.println("\n Mode développeur ! \n Combinaison secrètet : " + getCodeSecret());
-		}
-
 		do {
 
 			int i = 0;
@@ -91,6 +87,11 @@ public class DefenseurRecherchePlusMoins extends ModeRecherche {
 			logger.trace("Réponse : " + getResultatOrdinateur());
 
 			if (getCodeSecretMachineTab().equals(getCodeSecretUtilisateurTab())) {
+
+				if (getModeDev().equals("-dev")) {
+					System.out.println("\n Mode développeur ! Combinaison secrètet : " + outil.chaineDeCaract(getCodeSecretUtilisateurTab()));
+				}
+
 				System.out.println("\n Votre ordinateur à trouvé votre Combinaison secrète : " + outil.chaineDeCaract(getCodeSecretMachineTab()));
 				logger.trace("L'ordinateur à trouvé : " + outil.chaineDeCaract(getCodeSecretMachineTab()));
 
@@ -105,6 +106,11 @@ public class DefenseurRecherchePlusMoins extends ModeRecherche {
 		} while(!getCodeSecretUtilisateurTab().equals(getCodeSecretMachineTab()) && getCompteurEssai() <= outil.CONFIGURATION_ESSAIS);
 
 		if (!getCodeSecretUtilisateurTab().equals(getCodeSecretMachineTab())) {
+
+			if (getModeDev().equals("-dev")) {
+				System.out.println("\n Mode développeur ! Combinaison secrètet : " + outil.chaineDeCaract(getCodeSecretUtilisateurTab()));
+			}
+
 			System.out.println("\n L'ordinateur n'a pas réussi à trouver votre combinaison secrète : " + outil.chaineDeCaract(getCodeSecretUtilisateurTab()) + " ! ");
 			logger.trace("L'ordinateur à perdu : " + outil.chaineDeCaract(getCodeSecretMachineTab()));
 		}

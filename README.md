@@ -3,7 +3,7 @@
  ##Comment lancer l'application :
     
   - Pour lancer l'application "JeuxDeLogique" vous devez au préalable vous placer dans le dossier JeuxDeLogique où 
-    se trouve son "Excutable Jar File". 
+    se trouve son "Executable Jar File". 
     Une fois dans ce dossier, pour appeler l'application et lancer le jeu vous devez saisir la commande 
     suivante : java -jar JeuxDeLogique.jar 
     

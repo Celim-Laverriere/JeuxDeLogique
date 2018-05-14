@@ -12,7 +12,7 @@ public class Config  {
 		
 		try {
 			
-			InputStream is = new FileInputStream("config.properties");
+			InputStream is = new FileInputStream("./ressources/config.properties");
 			p.load(is);
 				
 		} catch (Exception e) {

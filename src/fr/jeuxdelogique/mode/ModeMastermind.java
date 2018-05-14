@@ -214,7 +214,7 @@ public class ModeMastermind extends Mode {
 		return entrerClavier;
 	}
 
-	/* Cette methode compare les deux nombres secret et renvoie les bien placés et les présents */
+	/* Cette methode compare les deux combinaisons et renvoie les bien placés et les présents */
 
 	public ArrayList<Byte> resultatMastermind (ArrayList<Long> codeSecretOrdinateur, ArrayList<Long> codeSecretUtilisateur) {
 
@@ -263,7 +263,7 @@ public class ModeMastermind extends Mode {
 	public void initalisationNombreMinMax() {
 
 		for (int i = 0; i < outil.CONFIGURATION_NOMBRE; i++ ) {
-			initalisationZero += "0";
+			initalisationZero += outil.CONFIGURATION_NOMBRE_UTILISABLE[0];
 			nombreMax += "" + Integer.parseInt(outil.CONFIGURATION_NOMBRE_UTILISABLE[1]);
 		}
 

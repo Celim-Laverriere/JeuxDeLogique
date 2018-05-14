@@ -30,7 +30,6 @@ public class MenuMode implements Menu {
 
 		do {
 
-
 			try {
 
 				System.out.print("\n\t - Entrez votre choix et tapez entrée pour valider : ");

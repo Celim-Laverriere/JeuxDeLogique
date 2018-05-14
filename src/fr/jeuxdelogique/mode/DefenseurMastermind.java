@@ -77,18 +77,27 @@ public class DefenseurMastermind extends ModeMastermind {
                 + "\n C'est à vous de jouer !\n" );
 
         System.out.print("\n Saisissez votre combinaison secrète et tapez sur entrée pour le valider : ");
+
+        // L'utilisateur entre sa combinaison secrète que l'ordinateur devra trouver
         setCodeSecretUtilisateur(outil.codeSecretAjoutTab(enterClavier()));
         logger.trace("Combinaison secrète générée par l'utilisateur " + outil.chaineDeCaract(getCodeSecretUtilisateur()));
 
-        // L'application génère un nombre aléatoire compris dans l'intervalle des chiffres utilisables
+        // L'ordinateur génère un nombre aléatoire compris dans l'intervalle des chiffres utilisables
         setCodeSecretPlayerOrdnateur(outil.codeSecretAjoutTab(outil.genererCodeSecret( Mastermind.class.getSimpleName())));
 
-        // L'application appelle la méthode setResultat_BienPlace_Present
+        // Appelle de la méthode resultatMastermind et compare les deux combinaisons
         setResultatBienPlacePresent(resultatMastermind(getCodeSecretPlayerOrdnateur(), getCodeSecretUtilisateur()));
 
+        // Initialisation de la plus petite combinaison possible en fonction de la configuration
         setTableauTempDeSolution(outil.codeSecretAjoutTab(getInitalisationZero()));
 
         System.out.print("\n Essai n° " + getCompteurEssai() + " ! ");
+
+        /*Partie 1 : premier traitement
+        * Nous entrons dans notre boucle et nous testons notre première possibilité initialisée plus haut
+        * puis nous allons générer toutes les possibilités et les comparer et sauvegarder les combinaisons
+        * potentiellement solution dans un tableau.
+        * */
 
         while(!getCodeSecretPlayerOrdnateur().equals(getCodeSecretUtilisateur()) && Long.parseLong(getNombreGenerer()) <= Long.parseLong(getNombreMax())) {
 
@@ -101,12 +110,20 @@ public class DefenseurMastermind extends ModeMastermind {
             setTableauTempDeSolution(outil.codeSecretAjoutTab(genereNombreSolution()));
         }
 
+        // Affichage du premier essai de l'ordinateur !
         System.out.println("\n Proposition l'ordinateur : " + outil.chaineDeCaract(getCodeSecretPlayerOrdnateur()) + " Réponse : " + getResultatBienPlacePresent().get(0) + " Bien placé(s) et " +
                 getResultatBienPlacePresent().get(1) + " Présent(s) !");
         logger.trace("Essai n° " + getCompteurEssai()+ " : " + getResultatBienPlacePresent().get(0) + " Bien placé(s) et " +
                 getResultatBienPlacePresent().get(1) + " Présent(s) !");
 
         setNombreGenerer("");
+
+        /*Partie 2 : Deuxième traitement
+        * Dans cette deuxième partie, on va récupérer le tableau des solutions potentielles et prendre au hasard
+        * une combinaison dedans. Comme sur le principe précédent nous comparons cette combinaison à celle de
+        * l'utilisateur puis chaque combinaison du tableau avec la combinaison prise au hasard.
+        * Nous réitérons ce processus jusqu'à, soit que l'ordinateur trouve la combinaison ou que le nombre d'essais soit ateind
+        **/
 
         while (!getCodeSecretPlayerOrdnateur().equals(getCodeSecretUtilisateur())
                 && getTableauDesPossibilites().size() > 1 && getCompteurEssai() < outil.CONFIGURATION_ESSAIS) {
@@ -186,7 +203,9 @@ public class DefenseurMastermind extends ModeMastermind {
             }
 
             if (tableauTempDeSolution.get(0) != 0 && outil.verificationNombreUtilisable(getNombreGenerer()) != true) {
-                setInitCodeAvecZero(getNombreGenerer());
+                int i = getNombreGenerer().length();
+                setInitCodeAvecZero(getInitalisationZero().substring(i, getInitalisationZero().length()));
+                setInitCodeAvecZero(getInitCodeAvecZero() + getNombreGenerer());
             }
 
         } while (!outil.verificationNombreUtilisable(getNombreGenerer()) != true && Long.parseLong(getNombreGenerer()) <= Long.parseLong(getNombreMax()));

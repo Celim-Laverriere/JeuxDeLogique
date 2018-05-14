@@ -217,7 +217,9 @@ public class DuelMastermind extends ModeMastermind {
 			}
 
 			if (tableauTempDeSolution.get(0) != 0 && outil.verificationNombreUtilisable(getNombreGenerer()) != true) {
-				setInitCodeAvecZero(getNombreGenerer());
+				int i = getNombreGenerer().length();
+				setInitCodeAvecZero(getInitalisationZero().substring(i, getInitalisationZero().length()));
+				setInitCodeAvecZero(getInitCodeAvecZero() + getNombreGenerer());
 			}
 
 		} while (!outil.verificationNombreUtilisable(getNombreGenerer()) != true && Long.parseLong(getNombreGenerer()) <= Long.parseLong(getNombreMax()));

@@ -77,17 +77,17 @@ public class MainJeux {
         System.out.println("\t\t**************************\n");
         System.out.println(" - POUR REJOUER AU MÊME JEU ENTREZ LE NOMBRE 1 DANS LA CONSOLE !");
         System.out.println(" - POUR LANCER UN NOUVEAU JEU ENTREZ LE NOMBRE 2 DANS LA CONSOLE !");
-        System.out.println(" - POUR QUITTER LE JEU ENTREZ LE NOMBRE 3 DANS LA CONSOLE !");
+        System.out.println(" - POUR QUITTER LE JEU ENTREZ LE NOMBRE 3 DANS LA CONSOLE !\n");
 
         do {
 
             try {
 
-                System.out.print("\n Entrez votre choix et tapez entrée pour valider : \n");
+                System.out.print(" Entrez votre choix et tapez entrée pour valider : ");
                 reponseMenu = sc.nextLine();
 
                 if (!reponseMenu.equals("1") && !reponseMenu.equals("2") && !reponseMenu.equals("3")) {
-                    throw new CodeInvalideException(" Attention votre saisie est incorrecte : " + reponseMenu + " !");
+                    throw new CodeInvalideException("\n Attention votre saisie est incorrecte : " + reponseMenu + " !");
                 }
 
             } catch (CodeInvalideException e) {
