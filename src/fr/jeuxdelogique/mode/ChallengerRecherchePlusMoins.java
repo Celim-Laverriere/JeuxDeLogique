@@ -27,7 +27,7 @@ public class ChallengerRecherchePlusMoins extends ModeRecherche {
 	@Override
 	public void playerGame() throws CodeInvalideException {
 
-		System.out.println("\t**********************************************");
+		System.out.println("\n\t**********************************************");
 		System.out.println("\t*                RECHERCHE +/-               *");
 		System.out.println("\t*               MODE CHALLENGER              *");
 		System.out.println("\t**********************************************");

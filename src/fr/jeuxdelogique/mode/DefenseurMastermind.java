@@ -95,7 +95,7 @@ public class DefenseurMastermind extends ModeMastermind {
 
         /*Partie 1 : premier traitement
         * Nous entrons dans notre boucle et nous testons notre première possibilité initialisée plus haut
-        * puis nous allons générer toutes les possibilités et les comparer et sauvegarder les combinaisons
+        * puis nous allons générer toutes les possibilitées, les comparer et sauvegarder les combinaisons
         * potentiellement solution dans un tableau.
         * */
 
@@ -110,7 +110,7 @@ public class DefenseurMastermind extends ModeMastermind {
             setTableauTempDeSolution(outil.codeSecretAjoutTab(genereNombreSolution()));
         }
 
-        // Affichage du premier essai de l'ordinateur !
+        // On Affiche la prosition de l'ordinateur !
         System.out.println("\n Proposition l'ordinateur : " + outil.chaineDeCaract(getCodeSecretPlayerOrdnateur()) + " Réponse : " + getResultatBienPlacePresent().get(0) + " Bien placé(s) et " +
                 getResultatBienPlacePresent().get(1) + " Présent(s) !");
         logger.trace("Essai n° " + getCompteurEssai()+ " : " + getResultatBienPlacePresent().get(0) + " Bien placé(s) et " +
@@ -119,9 +119,10 @@ public class DefenseurMastermind extends ModeMastermind {
         setNombreGenerer("");
 
         /*Partie 2 : Deuxième traitement
-        * Dans cette deuxième partie, on va récupérer le tableau des solutions potentielles et prendre au hasard
+        * Dans cette deuxième partie, on va récupérer le tableau des solutions potentielles et, prendre au hasard
         * une combinaison dedans. Comme sur le principe précédent nous comparons cette combinaison à celle de
         * l'utilisateur puis chaque combinaison du tableau avec la combinaison prise au hasard.
+        * Et on affiche la prosition de l'ordinateur !
         * Nous réitérons ce processus jusqu'à, soit que l'ordinateur trouve la combinaison ou que le nombre d'essais soit ateind
         **/
 

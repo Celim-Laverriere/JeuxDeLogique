@@ -111,7 +111,7 @@ public class DuelMastermind extends ModeMastermind {
 			getCodeSecretPlayerUtilisateurTab().clear();
 			setCodeSecretPlayerUtilisateurTab(outil.codeSecretAjoutTab(enterClavier()));
 
-			setResultatBienPlacePresentUtilisateur(resultatMastermind(getCodeSecretOrdinateur(), getCodeSecretPlayerUtilisateurTab()));
+			setResultatBienPlacePresentUtilisateur(resultatMastermind(getCodeSecretPlayerUtilisateurTab(), getCodeSecretOrdinateur()));
 
 //			System.out.println("\n\nVotre proposition : " + outil.chaineDeCaract(getCodeSecretPlayerUtilisateurTab()) + " Réponse : " + getResultat_BienPlace_Present().get(0) + " Bien placé et " +
 //			getResultat_BienPlace_Present().get(1) + " Présent !");

@@ -49,7 +49,7 @@ public class ChallengerMastermind extends ModeMastermind {
 			setCodeSecretPlayerUtilisateurTab(outil.codeSecretAjoutTab(enterClavier()));
 			logger.trace("Combinaison générée par l'utilisateur " + outil.chaineDeCaract(getCodeSecretPlayerUtilisateurTab()));
 
-			setResultatBienPlacePresent(resultatMastermind(getCodeSecretOrdinateur(), getCodeSecretPlayerUtilisateurTab()));
+			setResultatBienPlacePresent(resultatMastermind(getCodeSecretPlayerUtilisateurTab(),getCodeSecretOrdinateur()));
 
 			System.out.println("\n Proposition : " + outil.chaineDeCaract(getCodeSecretPlayerUtilisateurTab()) + " Réponse : " + getResultatBienPlacePresent().get(0) + " Bien placé(s) et " +
 					getResultatBienPlacePresent().get(1) + " Présent(s) !");

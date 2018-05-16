@@ -29,6 +29,7 @@ public class MenuJeux implements Menu{
 
         do {
 
+            //Une vérification de la saisie et faite et renvoie en cas d’erreur un message et propose à l'utilisateur de refaire une saisie.
             try {
 
                 System.out.print("\n\t - Entrez votre choix et taper Entrée pour valider : ");

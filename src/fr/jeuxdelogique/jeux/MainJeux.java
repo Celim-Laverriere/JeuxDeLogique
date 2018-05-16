@@ -19,6 +19,7 @@ public class MainJeux {
 
     public static void main(String[] args) throws CodeInvalideException {
 
+        /*Au lancement de l’application on va traiter l’argument ou non passer en paramètre, pour le mode développeur.*/
         try {
 
             if (args[0].equals("-dev")) {
@@ -53,8 +54,10 @@ public class MainJeux {
                     RecherchePlusMoins.mode(mode.getChoixMode());
                 }
 
+                //Puis le programme se déroule et appel la classe « MenuJeu » dans la package « menu ».
                 if (jeux.getChoixJeux().equals("Mastermind")) {
                     logger.info(mode.getChoixMode());
+                    //Une fois le jeu choisi on retourne à la classe « mainJeux » et va appeler la classe « MenuMode » toujours dans le package « menu »,
                     Mastermind.mode(mode.getChoixMode());
                 }
 
