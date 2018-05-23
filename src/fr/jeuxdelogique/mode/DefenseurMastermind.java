@@ -160,6 +160,7 @@ public class DefenseurMastermind extends ModeMastermind {
                     getResultatBienPlacePresent().get(1) + " Présent(s) !");
         }
 
+        // Une fois la partie terminée nous affichons un message approprié en fonctions du cas de figures.
         if (getCodeSecretUtilisateur().equals(getCodeSecretPlayerOrdnateur())) {
 
             if (getModeDev().equals("-dev")) {
@@ -197,13 +198,13 @@ public class DefenseurMastermind extends ModeMastermind {
 
             setNombreGenerer("" + (nbre = nbre + 1L));
 
-            if (tableauTempDeSolution.get(0) == 0 && outil.verificationNombreUtilisable(getNombreGenerer()) != true){
+            if (getNombreGenerer().length() <= getNombreMax().length() && tableauTempDeSolution.get(0) == 0 && outil.verificationNombreUtilisable(getNombreGenerer()) != true){
                 int i = getNombreGenerer().length();
                 setInitCodeAvecZero(getInitalisationZero().substring(i, getInitalisationZero().length()));
                 setInitCodeAvecZero(getInitCodeAvecZero() + getNombreGenerer());
             }
 
-            if (tableauTempDeSolution.get(0) != 0 && outil.verificationNombreUtilisable(getNombreGenerer()) != true) {
+            if (getNombreGenerer().length() <= getNombreMax().length() && tableauTempDeSolution.get(0) != 0 && outil.verificationNombreUtilisable(getNombreGenerer()) != true) {
                 int i = getNombreGenerer().length();
                 setInitCodeAvecZero(getInitalisationZero().substring(i, getInitalisationZero().length()));
                 setInitCodeAvecZero(getInitCodeAvecZero() + getNombreGenerer());

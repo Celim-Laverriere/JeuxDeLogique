@@ -12,6 +12,7 @@ public class Outils {
 	public final int CONFIGURATION_NOMBRE = configuration.configNombre();
 	public final int CONFIGURATION_ESSAIS = configuration.configEssais();
 	public final String [] CONFIGURATION_NOMBRE_UTILISABLE = configuration.nombreUtilisable().substring(1, 4).split(";");
+	public final String MODE_DEVELLOPEUR = configuration.modeDevelloppeur();
 	private ArrayList<String> nombreUtilisable = new ArrayList<String>();
 
 	public Outils() {

@@ -210,13 +210,13 @@ public class DuelMastermind extends ModeMastermind {
 
 			setNombreGenerer("" + (nbre = nbre + 1L));
 
-			if (tableauTempDeSolution.get(0) == 0 && outil.verificationNombreUtilisable(getNombreGenerer()) != true){
+			if (getNombreGenerer().length() <= getNombreMax().length() && tableauTempDeSolution.get(0) == 0 && outil.verificationNombreUtilisable(getNombreGenerer()) != true){
 				int i = getNombreGenerer().length();
 				setInitCodeAvecZero(getInitalisationZero().substring(i, getInitalisationZero().length()));
 				setInitCodeAvecZero(getInitCodeAvecZero() + getNombreGenerer());
 			}
 
-			if (tableauTempDeSolution.get(0) != 0 && outil.verificationNombreUtilisable(getNombreGenerer()) != true) {
+			if (getNombreGenerer().length() <= getNombreMax().length() && tableauTempDeSolution.get(0) != 0 && outil.verificationNombreUtilisable(getNombreGenerer()) != true) {
 				int i = getNombreGenerer().length();
 				setInitCodeAvecZero(getInitalisationZero().substring(i, getInitalisationZero().length()));
 				setInitCodeAvecZero(getInitCodeAvecZero() + getNombreGenerer());

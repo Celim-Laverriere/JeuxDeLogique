@@ -3,9 +3,11 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/all.log" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/MainJeux.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/Mastermind.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/fr/jeuxdelogique/jeux/RecherchePlusMoins.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/fr/jeuxdelogique/menu/MenuJeux.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/fr/jeuxdelogique/menu/MenuMode.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/fr/jeuxdelogique/menu/MenuStartEnd.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ChallengerMastermind.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/fr/jeuxdelogique/mode/ChallengerRecherchePlusMoins.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/fr/jeuxdelogique/mode/DefenseurMastermind.java" charset="windows-1252" />

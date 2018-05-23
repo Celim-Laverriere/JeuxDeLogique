@@ -30,7 +30,10 @@ public class Config  {
 	
 	public String nombreUtilisable() {
 		return p.getProperty("chiffre_utilisabble");
-		
+	}
+
+	public String modeDevelloppeur () {
+		return  p.getProperty("mode_developpeur");
 	}
 	
 }
